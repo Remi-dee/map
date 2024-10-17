@@ -36,45 +36,52 @@ const slidesData = [
 
 const Carousel = () => {
   return (
-    <div className="h-[320px]">
+    <div className="w-full max-w-md lg:max-w-lg mx-auto p-[20px] lg:p-0">
+      {" "}
+      {/* Full width on mobile, limited on larger screens */}
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
+        spaceBetween={20}
         pagination={{ clickable: true }}
         slidesPerView={1}
         autoplay={{
-          delay: 2500,
+          delay: 400,
           disableOnInteraction: false,
         }}
         navigation={true}
-        className="w-[510px]"
+        className="w-full" // Make Swiper take full width
       >
         {slidesData.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-[331px]  lg:w-[510px] text-[#FFFFFF]">
+            <div className="relative w-full text-[#FFFFFF]">
               <Image
                 aria-hidden
                 src={slide.image}
                 alt={`Slide ${index + 1}`}
                 layout="responsive"
-                className="rounded-[5px]"
+                className="rounded-lg" // Rounded edges for the image
                 width={null}
                 height={null}
               />
-              <div className="absolute left-4 bottom-7 lg:max-w-[478px] space-y-2">
-                <h2 className="text-sm font-semibold leading-4 text-left">
+              <div className="absolute left-4 bottom-7 max-w-full space-y-2">
+                {" "}
+                {/* Ensure text fits on all screens */}
+                <h2 className="text-xs md:text-sm font-semibold leading-4 text-left">
+                  {" "}
+                  {/* Smaller font for mobile */}
                   {slide.title}
                 </h2>
-                <p className="text-sm font-normal leading-4 text-left">
+                <p className="text-xs md:text-sm font-normal leading-4 text-left">
                   {slide.description}
                 </p>
               </div>
             </div>
-            <div className="swiper-button-next">
-              <Image src={ArrowRight} alt="Next" width={1.75} height={3} />
+            {/* Position arrows better for smaller screens */}
+            <div className="swiper-button-next !text-black !text-lg md:!text-xl">
+              <Image src={ArrowRight} alt="Next" width={24} height={24} />
             </div>
-            <div className="swiper-button-prev">
-              <Image src={ArrowLeft} alt="Previous" width={1.75} height={3} />
+            <div className="swiper-button-prev !text-black !text-lg md:!text-xl">
+              <Image src={ArrowLeft} alt="Previous" width={24} height={24} />
             </div>
           </SwiperSlide>
         ))}

@@ -5,14 +5,14 @@ import BarChart from "./Components/BarChart";
 
 export default function Home() {
   return (
-    <div className="  min-h-screen pt- lg:p-28  p-20 font-inter">
+    <div className="min-h-screen pt-0 lg:p-28 w-full p-0 font-inter">
       <main className="">
         <Header />
         <div className="mt-[34px] mb-[28px] ">
           <h1 className="text-xl font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
             Event Registrations per month
           </h1>
-          <div className=" lg:flex lg:space-x-[12px]">
+          <div className="flex-col  flex lg:flex-row lg:space-x-[12px]">
             <BarChart />
             <Carousel />
           </div>

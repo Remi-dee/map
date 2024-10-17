@@ -50,6 +50,7 @@ const BarChart = () => {
 
   const options = {
     responsive: true,
+    // Ensure chart is responsive
     plugins: {
       legend: {
         display: false,
@@ -94,8 +95,12 @@ const BarChart = () => {
   };
 
   return (
-    <div className="lg:p-[40px] border-2 border-gray-100 rounded-lg bg-white h-[320px] w-full lg:w-[510px]">
-      <Bar data={data} options={options} />
+    <div className="w-full max-w-full lg:max-w-lg mx-auto mt-4 p-4 lg:p-8 border border-gray-200 rounded-lg bg-white ">
+      <div className="h-[300px] lg:h-[320px]">
+        {" "}
+        {/* Container for height control */}
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };
