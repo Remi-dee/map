@@ -64,7 +64,6 @@ const mockData = [
     speaker: "Kevin Adams",
     status: "In Progress",
   },
-  // Add more events for testing pagination...
 ];
 
 const EventHistory = () => {
@@ -75,31 +74,31 @@ const EventHistory = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const pages = [...Array(totalPages).keys()].map((i) => i + 1); // Array of page numbers
 
   // Filtering and Sorting
   useEffect(() => {
     let updatedData = mockData;
 
-    // Filter by name
+    // Filtering logic...
     if (filter.name) {
       updatedData = updatedData.filter((item) =>
         item.name.toLowerCase().includes(filter.name.toLowerCase())
       );
     }
 
-    // Filter by status
+    // More filtering logic...
     if (filter.status) {
       updatedData = updatedData.filter((item) => item.status === filter.status);
     }
 
-    // Filter by date
     if (filter.date) {
       updatedData = updatedData.filter((item) =>
         item.date.includes(filter.date)
       );
     }
 
-    // Sort the data
+    // Sorting logic...
     if (sortOrder === "Most Recent") {
       updatedData.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else if (sortOrder === "Oldest") {
@@ -111,7 +110,7 @@ const EventHistory = () => {
     setFilteredData(updatedData);
   }, [filter, sortOrder]);
 
-  // Pagination
+  // Pagination logic
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
@@ -120,6 +119,7 @@ const EventHistory = () => {
     <div className="p-6">
       {/* Filters and Sorting */}
       <div className="flex space-x-4 mb-4">
+        {/* Filters UI... */}
         <input
           type="text"
           placeholder="Search by name"
@@ -182,40 +182,63 @@ const EventHistory = () => {
       </table>
 
       {/* Pagination */}
-      <div className="flex justify-between items-center mt-4">
-        {/* Pagination arrows */}
-        <div>
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            className="px-3 py-1 border rounded-l"
-          >
-            ←
-          </button>
-          <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-            className="px-3 py-1 border rounded-r"
-          >
-            →
-          </button>
-        </div>
+      <div className="flex justify-center items-center mt-4 space-x-2">
+        {/* Previous Arrow */}
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className={`px-3 py-1 border rounded ${
+            currentPage === 1
+              ? "bg-gray-200 cursor-not-allowed"
+              : "hover:bg-gray-100"
+          }`}
+        >
+          ←
+        </button>
 
-        {/* Rows per page */}
-        <div className="flex items-center space-x-2">
-          <span>Show:</span>
-          <select
-            value={rowsPerPage}
-            onChange={(e) => setRowsPerPage(Number(e.target.value))}
-            className="p-1 border"
+        {/* Page Numbers */}
+        {pages.map((page) => (
+          <button
+            key={page}
+            onClick={() => setCurrentPage(page)}
+            className={`px-3 py-1 border rounded-full ${
+              currentPage === page
+                ? "bg-purple-500 text-white"
+                : "hover:bg-gray-100"
+            }`}
           >
-            <option value={5}>5 rows</option>
-            <option value={10}>10 rows</option>
-            <option value={20}>20 rows</option>
-          </select>
-        </div>
+            {page}
+          </button>
+        ))}
+
+        {/* Next Arrow */}
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+          className={`px-3 py-1 border rounded ${
+            currentPage === totalPages
+              ? "bg-gray-200 cursor-not-allowed"
+              : "hover:bg-gray-100"
+          }`}
+        >
+          →
+        </button>
+      </div>
+
+      {/* Rows per page */}
+      <div className="flex items-center space-x-2 mt-4">
+        <span>Show:</span>
+        <select
+          value={rowsPerPage}
+          onChange={(e) => setRowsPerPage(Number(e.target.value))}
+          className="p-1 border"
+        >
+          <option value={5}>5 rows</option>
+          <option value={10}>10 rows</option>
+          <option value={20}>20 rows</option>
+        </select>
       </div>
     </div>
   );
