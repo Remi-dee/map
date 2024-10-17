@@ -2,6 +2,7 @@ import Image from "next/image";
 import Header from "./Components/Header";
 import Carousel from "./Components/carousel/Carousel";
 import BarChart from "./Components/BarChart";
+import EventHistory from "./Components/EventHistory";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
             <BarChart />
             <Carousel />
           </div>
+          <EventHistory />
         </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
