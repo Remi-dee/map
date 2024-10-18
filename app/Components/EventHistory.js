@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
+// Mock data
 const mockData = [
   {
     name: "Cloud Innovation Summit",
@@ -27,7 +28,6 @@ const mockData = [
     speaker: "John Lee",
     status: "Completed",
   },
-
   {
     name: "Data Analytics in Business",
     date: "2024-11-12",
@@ -80,25 +80,22 @@ const EventHistory = () => {
   useEffect(() => {
     let updatedData = mockData;
 
-    // Filtering logic...
+    // Filtering logic
     if (filter.name) {
       updatedData = updatedData.filter((item) =>
         item.name.toLowerCase().includes(filter.name.toLowerCase())
       );
     }
-
-    // More filtering logic...
     if (filter.status) {
       updatedData = updatedData.filter((item) => item.status === filter.status);
     }
-
     if (filter.date) {
       updatedData = updatedData.filter((item) =>
         item.date.includes(filter.date)
       );
     }
 
-    // Sorting logic...
+    // Sorting logic
     if (sortOrder === "Most Recent") {
       updatedData.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else if (sortOrder === "Oldest") {
@@ -115,11 +112,35 @@ const EventHistory = () => {
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
 
+  // CSV download logic
+  const downloadCSV = () => {
+    const headers = ["Event Name", "Date", "Speaker", "Status"];
+    const rows = filteredData.map((event) => [
+      event.name,
+      event.date,
+      event.speaker,
+      event.status,
+    ]);
+
+    let csvContent = `data:text/csv;charset=utf-8,${headers.join(",")}\n`;
+    rows.forEach((rowArray) => {
+      let row = rowArray.join(",");
+      csvContent += row + "\n";
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "event_history.csv");
+    document.body.appendChild(link); // Required for Firefox
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="p-6">
       {/* Filters and Sorting */}
       <div className="flex space-x-4 mb-4">
-        {/* Filters UI... */}
         <input
           type="text"
           placeholder="Search by name"
@@ -147,6 +168,16 @@ const EventHistory = () => {
           <option value="Oldest">Sort: Oldest</option>
           <option value="Name">Sort: Name</option>
         </select>
+      </div>
+
+      {/* Download CSV Button */}
+      <div className="mb-4">
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={downloadCSV}
+        >
+          Download CSV
+        </button>
       </div>
 
       {/* Table */}
@@ -183,7 +214,6 @@ const EventHistory = () => {
 
       {/* Pagination */}
       <div className="flex justify-center items-center mt-4 space-x-2">
-        {/* Previous Arrow */}
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
@@ -195,8 +225,6 @@ const EventHistory = () => {
         >
           ←
         </button>
-
-        {/* Page Numbers */}
         {pages.map((page) => (
           <button
             key={page}
@@ -210,8 +238,6 @@ const EventHistory = () => {
             {page}
           </button>
         ))}
-
-        {/* Next Arrow */}
         <button
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
@@ -233,7 +259,7 @@ const EventHistory = () => {
         <select
           value={rowsPerPage}
           onChange={(e) => setRowsPerPage(Number(e.target.value))}
-          className="p-1 border"
+          className="p-2 border border-gray-300 rounded"
         >
           <option value={5}>5 rows</option>
           <option value={10}>10 rows</option>
