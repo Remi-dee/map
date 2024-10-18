@@ -139,45 +139,49 @@ const EventHistory = () => {
 
   return (
     <div className="p-6">
-      {/* Filters and Sorting */}
-      <div className="flex space-x-4 mb-4">
-        <input
-          type="text"
-          placeholder="Search by name"
-          className="p-2 border border-gray-300 rounded"
-          onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-        />
-        <select
-          className="p-2 border border-gray-300 rounded"
-          onChange={(e) => setFilter({ ...filter, status: e.target.value })}
-        >
-          <option value="">Filter by status</option>
-          <option value="Completed">Completed</option>
-          <option value="In Progress">In Progress</option>
-        </select>
-        <input
-          type="date"
-          className="p-2 border border-gray-300 rounded"
-          onChange={(e) => setFilter({ ...filter, date: e.target.value })}
-        />
-        <select
-          className="p-2 border border-gray-300 rounded"
-          onChange={(e) => setSortOrder(e.target.value)}
-        >
-          <option value="Most Recent">Sort: Most Recent</option>
-          <option value="Oldest">Sort: Oldest</option>
-          <option value="Name">Sort: Name</option>
-        </select>
-      </div>
+      <div className="flex justify-between">
+        {/* Filters and Sorting */}
+        <div className="flex space-x-4 mb-4">
+          <input
+            type="text"
+            placeholder="Search by name"
+            className="p-2 border border-gray-300 rounded"
+            onChange={(e) => setFilter({ ...filter, name: e.target.value })}
+          />
 
-      {/* Download CSV Button */}
-      <div className="mb-4">
-        <button
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={downloadCSV}
-        >
-          Download CSV
-        </button>
+          <input
+            type="date"
+            placeholder="Date"
+            className="p-2 border border-gray-300 rounded"
+            onChange={(e) => setFilter({ ...filter, date: e.target.value })}
+          />
+
+          <select
+            className="p-2 border border-gray-300 rounded"
+            onChange={(e) => setFilter({ ...filter, status: e.target.value })}
+          >
+            <option value="">Status</option>
+            <option value="Completed">Completed</option>
+            <option value="In Progress">In Progress</option>
+          </select>
+          <select
+            className="p-2 border border-gray-300 rounded"
+            onChange={(e) => setSortOrder(e.target.value)}
+          >
+            Sort: <option value="Most Recent"> Most Recent</option>
+            <option value="Oldest">Sort: Oldest</option>
+            <option value="Name">Sort: Name</option>
+          </select>
+        </div>
+        {/* Download CSV Button */}
+        <div className="mb-4">
+          <button
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            onClick={downloadCSV}
+          >
+            Export
+          </button>
+        </div>{" "}
       </div>
 
       {/* Table */}
