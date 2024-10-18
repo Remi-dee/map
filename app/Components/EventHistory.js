@@ -1,6 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import ArrowLeft from "../assets/arrow_left.png";
+import ArrowRight from "../assets/arrow_right.png";
+import Download from "../assets/download.png";
 
 // Mock data
 const mockData = [
@@ -139,13 +143,17 @@ const EventHistory = () => {
 
   return (
     <div className="p-6">
-      <div className="flex justify-between">
+      <h1 className="text-xl font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
+        Event History
+      </h1>
+
+      <div className="flex justify-between items-center">
         {/* Filters and Sorting */}
         <div className="flex gap-[8px] mb-4">
           <input
             type="text"
             placeholder="Search..."
-            className="p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
+            className="w-[200px] p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
           />
 
@@ -186,19 +194,32 @@ const EventHistory = () => {
             </select>
           </div>
         </div>
+        <div>
+          {" "}
+          <h1 className="text-[18px] font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
+            Displaying {rowsPerPage} rows
+          </h1>
+        </div>
         {/* Download CSV Button */}
         <div className="mb-4">
           <button
-            className="px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+            className="flex items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
             onClick={downloadCSV}
           >
-            Export
+            <Image
+              aria-hidden
+              src={Download}
+              alt="Arrow up"
+              width={12}
+              height={12}
+            />
+            <span> Export</span>
           </button>
         </div>{" "}
       </div>
 
       {/* Table */}
-      <table className="min-w-full table-auto border border-[#F1F5F9]">
+      <table className="min-w-full table-auto ">
         <thead>
           <tr className="bg-gray-200 ">
             <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
@@ -217,19 +238,30 @@ const EventHistory = () => {
         </thead>
         <tbody className="text-[#334155]">
           {currentRows.map((event, index) => (
-            <tr key={index} className="border-t">
+            <tr key={index} className="">
               <td className="p-2">{event.name}</td>
               <td className="p-2">{event.date}</td>
               <td className="p-2">{event.speaker}</td>
+
               <td className="p-2">
                 <span
-                  className={`px-[8px] py-[4px] text-xs rounded-[100px] ${
+                  className={`relative inline-flex items-center px-[8px] py-[4px] text-xs rounded-[100px] ${
                     event.status === "Completed"
                       ? "bg-[#D1FAE5] text-[#10B981]"
                       : "bg-[#DBEAFE] text-[#3B82F6]"
                   }`}
                 >
-                  {event.status}
+                  {/* Circle indicator inside the status */}
+                  <span
+                    className={`absolute left-2 inline-block w-[8px] h-[8px] rounded-full ${
+                      event.status === "Completed"
+                        ? "bg-[#10B981]" // Green for completed
+                        : "bg-[#3B82F6]" // Blue for in progress
+                    }`}
+                  ></span>
+
+                  {/* Shift text to make room for the circle */}
+                  <span className="ml-4">{event.status}</span>
                 </span>
               </td>
             </tr>
@@ -244,13 +276,19 @@ const EventHistory = () => {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className={`font-semibold px-3 py-1 border rounded ${
+            className={`font-semibold p-[16px] border rounded ${
               currentPage === 1
                 ? "bg-gray-200 cursor-not-allowed"
                 : "hover:bg-gray-100"
             }`}
           >
-            &lt;
+            <Image
+              aria-hidden
+              src={ArrowLeft}
+              alt="Arrow up"
+              width={5}
+              height={5}
+            />
           </button>
           {pages.map((page) => (
             <button
@@ -270,13 +308,19 @@ const EventHistory = () => {
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className={`px-3 py-1 border rounded ${
+            className={`p-[16px] border rounded ${
               currentPage === totalPages
                 ? "bg-[#E2E8F0] cursor-not-allowed"
                 : "hover:bg-gray-100"
             }`}
           >
-            &gt;
+            <Image
+              aria-hidden
+              src={ArrowRight}
+              alt="Arrow up"
+              width={5}
+              height={5}
+            />
           </button>
         </div>
 
