@@ -147,13 +147,13 @@ const EventHistory = () => {
         Event History
       </h1>
 
-      <div className="flex justify-between items-center">
+      <div className="flex lg:gap-[8px] mb-4 lg:flex-row flex-col  lg:justify-between items-center">
         {/* Filters and Sorting */}
-        <div className="flex gap-[8px] mb-4">
+        <div className="flex lg:gap-[8px] mb-4 lg:flex-row flex-col gap-2 lg:items-center">
           <input
             type="text"
             placeholder="Search..."
-            className="w-[200px] p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
+            className="w-[335px] lg:w-[200px] p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
           />
 
@@ -165,7 +165,7 @@ const EventHistory = () => {
           />
 
           <select
-            className="px-4 py-2 border border-[#E2E8F0] rounded"
+            className="px-4 py-3 border border-[#E2E8F0] rounded"
             onChange={(e) => setFilter({ ...filter, status: e.target.value })}
           >
             <option value="">Status</option>
@@ -174,7 +174,7 @@ const EventHistory = () => {
           </select>
 
           <select
-            className="px-4 py-2 border border-[#E2E8F0] rounded"
+            className="px-4 py-3 border border-[#E2E8F0] rounded"
             onChange={(e) => setFilter({ ...filter, status: e.target.value })}
           >
             <option value="">Name</option>
@@ -182,10 +182,18 @@ const EventHistory = () => {
             <option value="In Progress">In Progress</option>
           </select>
 
-          <div class="flex items-center gap-1">
+          <span>
+            {" "}
+            <h1 className="text-[18px] font-medium leading-5   ">
+              Displaying {rowsPerPage} rows
+            </h1>
+          </span>
+        </div>
+        <div className="flex items-center flex-col lg:flex-row gap-2">
+          <div class="flex justify-between w-full items-center gap-8 mb-4">
             <span>Sort: </span>
             <select
-              className="px-4 py-2 border border-[#E2E8F0] rounded"
+              className="px-4 py-3 border border-[#E2E8F0] rounded"
               onChange={(e) => setSortOrder(e.target.value)}
             >
               <option value="Most Recent"> Most Recent</option>
@@ -193,29 +201,23 @@ const EventHistory = () => {
               <option value="Name">Name</option>
             </select>
           </div>
+          {/* Download CSV Button */}
+          <div className="mb-4">
+            <button
+              className="flex text-center justify-center w-[335px] lg:w-[100px] items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              onClick={downloadCSV}
+            >
+              <Image
+                aria-hidden
+                src={Download}
+                alt="Arrow up"
+                width={12}
+                height={12}
+              />
+              <span> Export</span>
+            </button>
+          </div>{" "}
         </div>
-        <div>
-          {" "}
-          <h1 className="text-[18px] font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
-            Displaying {rowsPerPage} rows
-          </h1>
-        </div>
-        {/* Download CSV Button */}
-        <div className="mb-4">
-          <button
-            className="flex items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
-            onClick={downloadCSV}
-          >
-            <Image
-              aria-hidden
-              src={Download}
-              alt="Arrow up"
-              width={12}
-              height={12}
-            />
-            <span> Export</span>
-          </button>
-        </div>{" "}
       </div>
 
       {/* Table */}
