@@ -141,42 +141,55 @@ const EventHistory = () => {
     <div className="p-6">
       <div className="flex justify-between">
         {/* Filters and Sorting */}
-        <div className="flex space-x-4 mb-4">
+        <div className="flex gap-[8px] mb-4">
           <input
             type="text"
-            placeholder="Search by name"
-            className="p-2 border border-gray-300 rounded"
+            placeholder="Search..."
+            className="p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
           />
 
           <input
             type="date"
             placeholder="Date"
-            className="p-2 border border-gray-300 rounded"
+            className=" px-4 py-2 border border-[#E2E8F0] rounded"
             onChange={(e) => setFilter({ ...filter, date: e.target.value })}
           />
 
           <select
-            className="p-2 border border-gray-300 rounded"
+            className="px-4 py-2 border border-[#E2E8F0] rounded"
             onChange={(e) => setFilter({ ...filter, status: e.target.value })}
           >
             <option value="">Status</option>
             <option value="Completed">Completed</option>
             <option value="In Progress">In Progress</option>
           </select>
+
           <select
-            className="p-2 border border-gray-300 rounded"
-            onChange={(e) => setSortOrder(e.target.value)}
+            className="px-4 py-2 border border-[#E2E8F0] rounded"
+            onChange={(e) => setFilter({ ...filter, status: e.target.value })}
           >
-            Sort: <option value="Most Recent"> Most Recent</option>
-            <option value="Oldest">Sort: Oldest</option>
-            <option value="Name">Sort: Name</option>
+            <option value="">Name</option>
+            <option value="Completed">Completed</option>
+            <option value="In Progress">In Progress</option>
           </select>
+
+          <div class="flex items-center gap-1">
+            <span>Sort: </span>
+            <select
+              className="px-4 py-2 border border-[#E2E8F0] rounded"
+              onChange={(e) => setSortOrder(e.target.value)}
+            >
+              <option value="Most Recent"> Most Recent</option>
+              <option value="Oldest">Oldest</option>
+              <option value="Name">Name</option>
+            </select>
+          </div>
         </div>
         {/* Download CSV Button */}
         <div className="mb-4">
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
             onClick={downloadCSV}
           >
             Export
@@ -185,16 +198,24 @@ const EventHistory = () => {
       </div>
 
       {/* Table */}
-      <table className="min-w-full table-auto border border-gray-300">
+      <table className="min-w-full table-auto border border-[#F1F5F9]">
         <thead>
-          <tr className="bg-gray-200">
-            <th className="p-2 text-left">Event Name</th>
-            <th className="p-2 text-left">Date</th>
-            <th className="p-2 text-left">Speaker</th>
-            <th className="p-2 text-left">Status</th>
+          <tr className="bg-gray-200 ">
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+              Event Name
+            </th>
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+              Date
+            </th>
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+              Speaker
+            </th>
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+              Status
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-[#334155]">
           {currentRows.map((event, index) => (
             <tr key={index} className="border-t">
               <td className="p-2">{event.name}</td>
@@ -202,10 +223,10 @@ const EventHistory = () => {
               <td className="p-2">{event.speaker}</td>
               <td className="p-2">
                 <span
-                  className={`p-1 text-xs rounded ${
+                  className={`px-[8px] py-[4px] text-xs rounded-[100px] ${
                     event.status === "Completed"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-blue-100 text-blue-800"
+                      ? "bg-[#D1FAE5] text-[#10B981]"
+                      : "bg-[#DBEAFE] text-[#3B82F6]"
                   }`}
                 >
                   {event.status}
@@ -217,58 +238,61 @@ const EventHistory = () => {
       </table>
 
       {/* Pagination */}
-      <div className="flex justify-center items-center mt-4 space-x-2">
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className={`px-3 py-1 border rounded ${
-            currentPage === 1
-              ? "bg-gray-200 cursor-not-allowed"
-              : "hover:bg-gray-100"
-          }`}
-        >
-          ←
-        </button>
-        {pages.map((page) => (
+
+      <div className="flex justify-between">
+        <div className="flex justify-center items-center mt-4 space-x-2">
           <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`px-3 py-1 border rounded-full ${
-              currentPage === page
-                ? "bg-purple-500 text-white"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className={`font-semibold px-3 py-1 border rounded ${
+              currentPage === 1
+                ? "bg-gray-200 cursor-not-allowed"
                 : "hover:bg-gray-100"
             }`}
           >
-            {page}
+            &lt;
           </button>
-        ))}
-        <button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-          className={`px-3 py-1 border rounded ${
-            currentPage === totalPages
-              ? "bg-gray-200 cursor-not-allowed"
-              : "hover:bg-gray-100"
-          }`}
-        >
-          →
-        </button>
-      </div>
+          {pages.map((page) => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`px-3 py-1 border rounded-full ${
+                currentPage === page
+                  ? "bg-[#8576FF] text-white"
+                  : "hover:bg-gray-100"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 border rounded ${
+              currentPage === totalPages
+                ? "bg-[#E2E8F0] cursor-not-allowed"
+                : "hover:bg-gray-100"
+            }`}
+          >
+            &gt;
+          </button>
+        </div>
 
-      {/* Rows per page */}
-      <div className="flex items-center space-x-2 mt-4">
-        <span>Show:</span>
-        <select
-          value={rowsPerPage}
-          onChange={(e) => setRowsPerPage(Number(e.target.value))}
-          className="p-2 border border-gray-300 rounded"
-        >
-          <option value={5}>5 rows</option>
-          <option value={10}>10 rows</option>
-          <option value={20}>20 rows</option>
-        </select>
+        {/* Rows per page */}
+        <div className="flex items-center space-x-2 mt-4">
+          <span>Show:</span>
+          <select
+            value={rowsPerPage}
+            onChange={(e) => setRowsPerPage(Number(e.target.value))}
+            className="p-2 border border-gray-300 rounded"
+          >
+            <option value={5}>5 rows</option>
+            <option value={10}>10 rows</option>
+            <option value={20}>20 rows</option>
+          </select>
+        </div>
       </div>
     </div>
   );
