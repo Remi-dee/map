@@ -190,7 +190,7 @@ const EventHistory = () => {
           </span>
         </div>
         <div className="flex items-center flex-col lg:flex-row gap-2">
-          <div class="flex justify-between w-full items-center gap-8 mb-4">
+          <div className="flex justify-between w-full items-center gap-8 mb-4">
             <span>Sort: </span>
             <select
               className="px-4 py-3 border border-[#E2E8F0] rounded"
@@ -202,9 +202,23 @@ const EventHistory = () => {
             </select>
           </div>
           {/* Download CSV Button */}
-          <div className="mb-4">
+          <div className="flex justify-between mb-4">
             <button
-              className="flex text-center justify-center w-[335px] lg:w-[100px] items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              className="flex text-center justify-center w-[115px] lg:w-[100px] items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              onClick={downloadCSV}
+            >
+              <Image
+                aria-hidden
+                src={Download}
+                alt="Arrow up"
+                width={12}
+                height={12}
+              />
+              <span> Export</span>
+            </button>
+
+            <button
+              className="flex text-center justify-center w-[115px] lg:w-[100px] items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
             >
               <Image
