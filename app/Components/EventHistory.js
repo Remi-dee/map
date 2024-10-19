@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import ArrowLeft from "../assets/arrow_left.png";
 import ArrowRight from "../assets/arrow_right.png";
 import Download from "../assets/download.png";
+import Elipse from "../assets/elipse.png";
 
 // Mock data
 const mockData = [
@@ -142,18 +143,18 @@ const EventHistory = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
+    <div className="w-full mt-[21px] lg:mt-[28px]">
+      <h1 className="text-xl font-medium leading-5 text-left mb-[21px]  lg:mb-[6px]">
         Event History
       </h1>
 
-      <div className="flex lg:gap-[8px] mb-4 lg:flex-row flex-col  lg:justify-between items-center">
+      <div className="flex lg:gap-[85px] mb-4 lg:flex-row flex-col  lg:justify-between items-center w-full">
         {/* Filters and Sorting */}
-        <div className="flex lg:gap-[8px] mb-4 lg:flex-row flex-col gap-2 lg:items-center">
+        <div className="flex lg:gap-[8px]  lg:flex-row flex-col gap-2 lg:items-center w-full">
           <input
             type="text"
             placeholder="Search..."
-            className="w-[335px] lg:w-[200px] p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
+            className=" lg:w-[200px] p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
           />
 
@@ -184,13 +185,13 @@ const EventHistory = () => {
 
           <span>
             {" "}
-            <h1 className="text-[18px] font-medium leading-5   ">
+            <h1 className="text-[18px] mb-[10px] lg:mb-0 font-medium leading-5 w-[150px]   ">
               Displaying {rowsPerPage} rows
             </h1>
           </span>
         </div>
-        <div className="flex items-center flex-col lg:flex-row gap-2">
-          <div className="flex justify-between w-full items-center gap-8 mb-4">
+        <div className="flex items-center flex-col lg:flex-row gap-2 w-full lg:justify-end ">
+          <div className="flex justify-between items-center gap-2 mb-4 w-full lg:w-[240px] ">
             <span>Sort: </span>
             <select
               className="px-4 py-3 border border-[#E2E8F0] rounded"
@@ -202,9 +203,21 @@ const EventHistory = () => {
             </select>
           </div>
           {/* Download CSV Button */}
-          <div className="flex justify-between mb-4">
+          <div className="flex justify-between mb-4  w-full ">
             <button
-              className="flex text-center justify-center w-[115px] lg:w-[100px] items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              className="flex lg:hidden text-center justify-center  lg:w-[100px] items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              onClick={downloadCSV}
+            >
+              <Image
+                aria-hidden
+                src={Elipse}
+                alt="Arrow up"
+                width={3}
+                height={3}
+              />
+            </button>
+            <button
+              className="flex text-center justify-center w-[115px] lg:w-[164px]  items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
             >
               <Image
@@ -215,21 +228,7 @@ const EventHistory = () => {
                 height={12}
               />
               <span> Export</span>
-            </button>
-
-            <button
-              className="flex text-center justify-center w-[115px] lg:w-[100px] items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
-              onClick={downloadCSV}
-            >
-              <Image
-                aria-hidden
-                src={Download}
-                alt="Arrow up"
-                width={12}
-                height={12}
-              />
-              <span> Export</span>
-            </button>
+            </button>{" "}
           </div>{" "}
         </div>
       </div>

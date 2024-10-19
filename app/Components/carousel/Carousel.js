@@ -36,7 +36,7 @@ const slidesData = [
 
 const Carousel = () => {
   return (
-    <div className="w-full max-w-md lg:max-w-lg mx-auto p-[20px] lg:p-0">
+    <div className="w-full max-w-md lg:max-w-lg mx-auto mt-[21px] ">
       {" "}
       {/* Full width on mobile, limited on larger screens */}
       <Swiper
@@ -59,7 +59,7 @@ const Carousel = () => {
                 src={slide.image}
                 alt={`Slide ${index + 1}`}
                 layout="responsive"
-                className="rounded-lg" // Rounded edges for the image
+                className="rounded-lg " // Rounded edges for the image
                 width={null}
                 height={null}
               />

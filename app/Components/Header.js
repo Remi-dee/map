@@ -12,7 +12,7 @@ const Header = () => {
         </h1>
         <div className="lg:flex   lg:space-x-[12px] mt-[12px] lg:mt-[24px]">
           {" "}
-          <div className="flex flex-col space-y-2 mt-[24px]  p-[16px] rounded-[4px]  border-2 w-[335px] lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px]  p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Events</h2>
               <Image
@@ -40,7 +40,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-[335px] lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Active Speakers</h2>
               <Image
@@ -68,7 +68,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-[335px] lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Registerations</h2>
               <Image
@@ -96,7 +96,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-[335px] lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Revenue</h2>
               <Image

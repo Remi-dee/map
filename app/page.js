@@ -6,7 +6,7 @@ import EventHistory from "./Components/EventHistory";
 
 export default function Home() {
   return (
-    <div className="min-h-screen pt-0 lg:p-28 w-full p-0 font-inter">
+    <div className="min-h-screen pt-0 px-[20px] lg:p-28 w-full p-2 font-inter ">
       <main className="">
         <Header />
         <div className="mt-[34px] mb-[28px] ">
