@@ -3,11 +3,13 @@ import Header from "./Components/Header";
 import Carousel from "./Components/carousel/Carousel";
 import BarChart from "./Components/BarChart";
 import EventHistory from "./Components/EventHistory";
+import Sidebar from "./Components/SideBar";
 
 export default function Home() {
   return (
     <div className="min-h-screen pt-0 px-[20px] lg:p-28 w-full p-2 font-inter ">
       <main className="">
+        <Sidebar />
         <Header />
         <div className="mt-[34px] mb-[28px] ">
           <h1 className="text-xl font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
