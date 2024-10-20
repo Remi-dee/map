@@ -148,7 +148,7 @@ const EventHistory = () => {
         Event History
       </h1>
 
-      <div className="flex lg:gap-[85px] mb-4 lg:flex-row flex-col  lg:justify-between items-center w-full">
+      <div className="flex lg:gap-[48px] mb-4 lg:flex-row flex-col lg:items-center  lg:justify-between items-center w-full">
         {/* Filters and Sorting */}
         <div className="flex lg:gap-[8px]  lg:flex-row flex-col gap-2 lg:items-center w-full">
           <input
@@ -185,13 +185,13 @@ const EventHistory = () => {
 
           <span>
             {" "}
-            <h1 className="text-[18px] mb-[10px] lg:mb-0 font-medium leading-5 w-[150px]   ">
+            <h1 className="text-[18px] mb-[10px] lg:mb-0 font-medium leading-5    ">
               Displaying {rowsPerPage} rows
             </h1>
           </span>
         </div>
-        <div className="flex items-center flex-col lg:flex-row gap-2 w-full lg:justify-end ">
-          <div className="flex justify-between items-center gap-2 mb-4 w-full lg:w-[240px] ">
+        <div className="flex items-center flex-col lg:flex-row gap-2 w-full  ">
+          <div className="flex justify-between items-center gap-2 mb-4 lg:mb-0 w-full lg:w-[240px] ">
             <span>Sort: </span>
             <select
               className="px-4 py-3 border border-[#E2E8F0] rounded"
@@ -203,7 +203,7 @@ const EventHistory = () => {
             </select>
           </div>
           {/* Download CSV Button */}
-          <div className="flex justify-between mb-4  w-full ">
+          <div className="flex justify-between mb-4 lg:mb-0  w-full ">
             <button
               className="flex lg:hidden text-center justify-center  lg:w-[100px] items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
@@ -217,7 +217,7 @@ const EventHistory = () => {
               />
             </button>
             <button
-              className="flex text-center justify-center w-[115px] lg:w-[164px]  items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              className="flex text-center justify-center w-[115px] lg:w-[124px]  items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
             >
               <Image

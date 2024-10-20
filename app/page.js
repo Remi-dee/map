@@ -13,7 +13,7 @@ export default function Home() {
           <h1 className="text-xl font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
             Event Registrations per month
           </h1>
-          <div className="flex-col  flex lg:flex-row lg:space-x-[12px]">
+          <div className="flex-col  flex lg:flex-row lg:justify-between w-full lg:gap-20">
             <BarChart />
             <Carousel />
           </div>

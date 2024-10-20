@@ -36,7 +36,7 @@ const slidesData = [
 
 const Carousel = () => {
   return (
-    <div className="w-full max-w-md lg:max-w-lg mx-auto mt-[21px] ">
+    <div className="w-full max-w-md lg:max-w-lg mx-auto mt-[21px] lg:mt-0 lg:h-[320px]">
       {" "}
       {/* Full width on mobile, limited on larger screens */}
       <Swiper

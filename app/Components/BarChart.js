@@ -95,8 +95,8 @@ const BarChart = () => {
   };
 
   return (
-    <div className="w-full max-w-full lg:max-w-lg mx-auto mt-4 p-[10px]  lg:p-8 border border-gray-200 rounded-lg bg-white ">
-      <div className=" lg:h-[320px]">
+    <div className="w-full max-w-full lg:max-w-lg mx-auto mt-4 lg:mt-0 p-[10px]  lg:p-8 border border-gray-200 rounded-lg bg-white ">
+      <div className=" ">
         {" "}
         {/* Container for height control */}
         <Bar data={data} options={options} />
