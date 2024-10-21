@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`flex  ${
+      className={`hidden lg:flex  ${
         isCollapsed ? "w-16" : ""
       } h-screen transition-width duration-300 p-[8px] bg-white border-r border-[#F1F5F9]`}
     >
@@ -98,7 +98,9 @@ const Sidebar = () => {
                 <Image
                   src={User}
                   alt="User avatar"
-                  className="w-8 h-8 rounded-full"
+                  className={`${
+                    isCollapsed ? "w-6 h-6" : "w-8 h-8"
+                  }   rounded-full`}
                 />
                 {!isCollapsed && (
                   <div>
