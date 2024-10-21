@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   HomeIcon,
   CalendarIcon,
@@ -16,11 +16,32 @@ import { PiChatsCircle } from "react-icons/pi";
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Persist dark mode preference in local storage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
   return (
     <div
       className={`hidden lg:flex  ${
         isCollapsed ? "w-16" : ""
-      } h-screen transition-width duration-300 p-[8px] bg-white border-r border-[#F1F5F9]`}
+      } h-screen transition-width dark:bg-gray-800 dark:border-gray-700 duration-300 p-[8px] bg-white border-r border-[#F1F5F9]`}
     >
       {/* Sidebar content */}
       <div
@@ -31,10 +52,10 @@ const Sidebar = () => {
         <div>
           <ul className="mt-4 ">
             {" "}
-            <li className="flex items-center p-4 hover:bg-gray-200">
-              <HomeIcon className="h-6 w-6 text-gray-500" />
+            <li className="flex items-center p-4  hover:bg-gray-200 dark:hover:bg-gray-600">
+              <HomeIcon className="h-6 w-6 text-gray-500 dark:text-gray-300" />
               {!isCollapsed && (
-                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
+                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-gray-300">
                   Home
                 </span>
               )}
@@ -64,12 +85,6 @@ const Sidebar = () => {
               )}
             </li>
             <li className="flex items-center p-4 hover:bg-gray-200">
-              <Image
-                src={Message}
-                width={20}
-                height={20}
-                className={`rotate-180 ${isCollapsed && " rotate-180"} `}
-              />
               <PiChatsCircle className="h-6 w-6 text-gray-500" />
               {!isCollapsed && (
                 <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
@@ -118,6 +133,21 @@ const Sidebar = () => {
                 </span>
               </span>
             </button>
+            <div className="p-4">
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={isDarkMode}
+                  onChange={toggleDarkMode}
+                  className="toggle-checkbox h-5 w-10 rounded-full bg-gray-300 dark:bg-gray-700 appearance-none cursor-pointer"
+                />
+
+                <span className="toggle-thumb block w-4 h-4 bg-white dark:bg-gray-400 rounded-full shadow transform transition-transform duration-300" />
+                <span className="mr-3 text-gray-500 dark:text-gray-300">
+                  Dark mode
+                </span>
+              </label>
+            </div>
             <div className="p-4">
               <div className="flex items-center space-x-2">
                 <Image
