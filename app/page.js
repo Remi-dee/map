@@ -7,9 +7,10 @@ import Sidebar from "./Components/SideBar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen pt-0 px-[20px] lg:p-28 w-full p-2 font-inter ">
+    <div className="min-h-screen flex pt-0 px-[20px] lg:p-28 w-full p-2 font-inter gap-[28px] ">
+      <Sidebar />
+
       <main className="">
-        <Sidebar />
         <Header />
         <div className="mt-[34px] mb-[28px] ">
           <h1 className="text-xl font-medium leading-5 text-left mb-[12px]  lg:mb-[14px]">
