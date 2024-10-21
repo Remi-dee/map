@@ -3,6 +3,8 @@ import ArrowUp from "../assets/arrow_up.png";
 import ArrowDown from "../assets/arrow_down.png";
 import Information from "../assets/information.png";
 import Image from "next/image";
+
+import { RiErrorWarningLine } from "react-icons/ri";
 const Header = () => {
   return (
     <div>
@@ -15,13 +17,8 @@ const Header = () => {
           <div className="flex flex-col space-y-2 mt-[24px]  p-[16px] rounded-[4px] dark:text-white dark:border-[#484554] border-2 w-full lg-w-[260px] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0 ">
               <h2>Total Events</h2>
-              <Image
-                aria-hidden
-                src={Information}
-                alt="Information"
-                width={20}
-                height={20}
-              />
+
+              <RiErrorWarningLine className="h-4 w-4 text-gray-500 dark:text-[#FFFFFF]" />
             </div>
             <div className="flex space-x-[8px] items-center dark:bg-[#484554]">
               <p className="font-inter text-lg font-semibold leading-8 text-left">
@@ -43,13 +40,7 @@ const Header = () => {
           <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px] dark:text-white dark:border-[#484554] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Active Speakers</h2>
-              <Image
-                aria-hidden
-                src={Information}
-                alt="Information"
-                width={20}
-                height={20}
-              />
+              <RiErrorWarningLine className="h-4 w-4 text-gray-500 dark:text-[#FFFFFF]" />
             </div>
             <div className="flex space-x-[8px] items-center">
               <p className="font-inter text-lg font-semibold leading-8 text-left">
@@ -71,13 +62,7 @@ const Header = () => {
           <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px] dark:text-white dark:border-[#484554] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Registerations</h2>
-              <Image
-                aria-hidden
-                src={Information}
-                alt="Information"
-                width={20}
-                height={20}
-              />
+              <RiErrorWarningLine className="h-4 w-4 text-gray-500 dark:text-[#FFFFFF]" />
             </div>
             <div className="flex space-x-[8px] items-center">
               <p className="font-inter text-lg font-semibold leading-8 text-left">
@@ -99,13 +84,7 @@ const Header = () => {
           <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px] dark:text-white dark:border-[#484554] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Revenue</h2>
-              <Image
-                aria-hidden
-                src={Information}
-                alt="Information"
-                width={20}
-                height={20}
-              />
+              <RiErrorWarningLine className="h-4 w-4 text-gray-500 dark:text-[#FFFFFF]" />
             </div>
             <div className="flex space-x-[8px] items-center">
               <p className="font-inter text-lg font-semibold leading-8 text-left">

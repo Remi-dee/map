@@ -6,6 +6,8 @@ import ArrowLeft from "../assets/arrow_left.png";
 import ArrowRight from "../assets/arrow_right.png";
 import Download from "../assets/download.png";
 import Elipse from "../assets/elipse.png";
+import { MdArrowForwardIos } from "react-icons/md";
+import { FiDownload } from "react-icons/fi";
 
 // Mock data
 const mockData = [
@@ -231,13 +233,7 @@ const EventHistory = () => {
               className="flex dark:bg-[#484554] dark:border-[#484554] text-center justify-center w-[115px] lg:w-[124px] dark:text-[#FCF7FF] items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
             >
-              <Image
-                aria-hidden
-                src={Download}
-                alt="Arrow up"
-                width={12}
-                height={12}
-              />
+              <FiDownload className="text-gray-500  dark:text-[#FCF7FF] " />
               <span> Export</span>
             </button>{" "}
           </div>{" "}
@@ -247,22 +243,22 @@ const EventHistory = () => {
       {/* Table */}
       <table className="min-w-full table-auto ">
         <thead>
-          <tr className="bg-gray-200 ">
-            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+          <tr className="bg-gray-200 dark:text-[#FFFFFF] dark:bg-[#6A6676]">
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
               Event Name
             </th>
-            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
               Date
             </th>
-            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
               Speaker
             </th>
-            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left text-[#64748B]">
+            <th className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
               Status
             </th>
           </tr>
         </thead>
-        <tbody className="text-[#334155]">
+        <tbody className="text-[#334155] dark:text-[#FCF7FF] dark:bg-[#484554] ">
           {currentRows.map((event, index) => (
             <tr key={index} className="">
               <td className="p-2">{event.name}</td>
@@ -302,28 +298,22 @@ const EventHistory = () => {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className={`font-semibold p-[16px] border rounded ${
+            className={`font-semibold p-[16px] border dark:bg-[#484554] dark:border-[#484554] rounded ${
               currentPage === 1
-                ? "bg-gray-200 cursor-not-allowed"
-                : "hover:bg-gray-100"
+                ? "dark:bg-gray-500 bg-gray-200  cursor-not-allowed"
+                : "hover:bg-gray-100 dark:hover:bg-gray-500"
             }`}
           >
-            <Image
-              aria-hidden
-              src={ArrowLeft}
-              alt="Arrow up"
-              width={5}
-              height={5}
-            />
+            <MdArrowForwardIos className="text-gray-500  dark:text-[#8576FF] rotate-180" />
           </button>
           {pages.map((page) => (
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`px-3 py-1 border rounded-full ${
+              className={`px-3 py-1  ${
                 currentPage === page
-                  ? "bg-[#8576FF] text-white"
-                  : "hover:bg-gray-100"
+                  ? "bg-[#8576FF] text-white border rounded-full"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-500  rounded-full dark:text-[#FFFFFF]"
               }`}
             >
               {page}
@@ -334,29 +324,23 @@ const EventHistory = () => {
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className={`p-[16px] border rounded ${
+            className={`p-[16px] border dark:bg-[#484554] dark:border-[#484554] rounded ${
               currentPage === totalPages
-                ? "bg-[#E2E8F0] cursor-not-allowed"
-                : "hover:bg-gray-100"
+                ? "dark:bg-gray-500 bg-gray-200 cursor-not-allowed"
+                : "hover:bg-gray-100  dark:hover:bg-gray-500"
             }`}
           >
-            <Image
-              aria-hidden
-              src={ArrowRight}
-              alt="Arrow up"
-              width={5}
-              height={5}
-            />
+            <MdArrowForwardIos className="text-gray-500  dark:text-[#8576FF]" />
           </button>
         </div>
 
         {/* Rows per page */}
-        <div className="flex items-center space-x-2 mt-4">
+        <div className="flex items-center space-x-2 mt-4  dark:text-[#FFFFFF]">
           <span>Show:</span>
           <select
             value={rowsPerPage}
             onChange={(e) => setRowsPerPage(Number(e.target.value))}
-            className="p-2 border border-gray-300 rounded"
+            className="p-2 border dark:bg-[#484554] dark:border-[#484554] border-gray-300 rounded"
           >
             <option value={5}>5 rows</option>
             <option value={10}>10 rows</option>

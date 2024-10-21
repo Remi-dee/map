@@ -1,6 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { LiaToggleOnSolid } from "react-icons/lia";
+
+import { PiToggleLeftDuotone } from "react-icons/pi";
 import {
   HomeIcon,
   CalendarIcon,
@@ -13,6 +16,7 @@ import DoubleArrow from "@/app/assets/doubleArrowRight.png";
 import Image from "next/image";
 import User from "@/app/assets/Profile.png";
 import Message from "@/app/assets/message.png";
+import { PiToggleRightFill } from "react-icons/pi";
 import { PiChatsCircle } from "react-icons/pi";
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -135,14 +139,14 @@ const Sidebar = () => {
             </button>
             <div className=" w-full">
               <label className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
-                <input
-                  type="checkbox"
-                  checked={isDarkMode}
-                  onChange={toggleDarkMode}
-                  className="toggle-checkbox h-5 w-10 rounded-full bg-gray-300 dark:bg-gray-700 appearance-none cursor-pointer"
-                />
+                <button onClick={toggleDarkMode} className=" ">
+                  {isDarkMode ? (
+                    <PiToggleRightFill className="text-[#8576FF]  h-6 w-6 " />
+                  ) : (
+                    <PiToggleRightFill className="text-[#E2E8F0] rotate-180 h-6 w-6" />
+                  )}
+                </button>
 
-                <span className="toggle-thumb block w-4 h-4 bg-white dark:bg-gray-400 rounded-full shadow transform transition-transform duration-300" />
                 <span
                   className={`${
                     isCollapsed && "hidden rotate-180"
