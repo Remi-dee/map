@@ -81,6 +81,17 @@ const EventHistory = () => {
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
   const pages = [...Array(totalPages).keys()].map((i) => i + 1); // Array of page numbers
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Persist dark mode preference in local storage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
   // Filtering and Sorting
   useEffect(() => {
     let updatedData = mockData;
@@ -144,7 +155,7 @@ const EventHistory = () => {
 
   return (
     <div className="w-full mt-[21px] lg:mt-[28px]">
-      <h1 className="text-xl font-medium leading-5 text-left mb-[21px]  lg:mb-[6px]">
+      <h1 className="text-xl font-medium leading-5 text-left mb-[21px] dark:text-white  lg:mb-[6px]">
         Event History
       </h1>
 
@@ -154,19 +165,19 @@ const EventHistory = () => {
           <input
             type="text"
             placeholder="Search..."
-            className=" lg:w-[200px] p-2 border border-[#E2E8F0] rounded text-[#CBD5E1]"
+            className=" lg:w-[200px] p-2  border border-[#E2E8F0] rounded dark:text-[#FCF7FF] dark:bg-[#484554] dark:border-[#484554] text-[#CBD5E1]"
             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
           />
 
           <input
             type="date"
             placeholder="Date"
-            className=" px-4 py-2 border border-[#E2E8F0] rounded"
+            className=" px-4 py-2 border border-[#E2E8F0] dark:text-[#FCF7FF] dark:bg-[#484554] dark:border-[#484554] rounded"
             onChange={(e) => setFilter({ ...filter, date: e.target.value })}
           />
 
           <select
-            className="px-4 py-3 border border-[#E2E8F0] rounded"
+            className="px-4 py-3 border border-[#E2E8F0] dark:text-[#FCF7FF] dark:bg-[#484554] dark:border-[#484554] rounded"
             onChange={(e) => setFilter({ ...filter, status: e.target.value })}
           >
             <option value="">Status</option>
@@ -175,7 +186,7 @@ const EventHistory = () => {
           </select>
 
           <select
-            className="px-4 py-3 border border-[#E2E8F0] rounded"
+            className="px-4 py-3 border border-[#E2E8F0] dark:text-[#FCF7FF] dark:bg-[#484554] dark:border-[#484554] rounded"
             onChange={(e) => setFilter({ ...filter, status: e.target.value })}
           >
             <option value="">Name</option>
@@ -185,16 +196,16 @@ const EventHistory = () => {
 
           <span>
             {" "}
-            <h1 className="text-[18px] mb-[10px] lg:mb-0 font-medium leading-5    ">
+            <h1 className="text-[18px] mb-[10px] lg:mb-0     font-medium leading-5   dark:text-white ">
               Displaying {rowsPerPage} rows
             </h1>
           </span>
         </div>
         <div className="flex items-center flex-col lg:flex-row gap-2 w-full  ">
           <div className="flex justify-between items-center gap-2 mb-4 lg:mb-0 w-full lg:w-[240px] ">
-            <span>Sort: </span>
+            <span className="dark:text-[#FCF7FF]">Sort: </span>
             <select
-              className="px-4 py-3 border border-[#E2E8F0] rounded"
+              className="px-4 py-3 border border-[#E2E8F0]  dark:bg-[#484554] dark:border-[#484554] dark:text-[#FCF7FF] rounded"
               onChange={(e) => setSortOrder(e.target.value)}
             >
               <option value="Most Recent"> Most Recent</option>
@@ -203,7 +214,7 @@ const EventHistory = () => {
             </select>
           </div>
           {/* Download CSV Button */}
-          <div className="flex justify-between mb-4 lg:mb-0  w-full ">
+          <div className="flex justify-between mb-4 lg:mb-0 dark:text-[#FCF7FF]  w-full ">
             <button
               className="flex lg:hidden text-center justify-center  lg:w-[100px] items-center gap-3 px-4 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
@@ -217,7 +228,7 @@ const EventHistory = () => {
               />
             </button>
             <button
-              className="flex text-center justify-center w-[115px] lg:w-[124px]  items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
+              className="flex dark:bg-[#484554] dark:border-[#484554] text-center justify-center w-[115px] lg:w-[124px] dark:text-[#FCF7FF] items-center gap-3 py-2 border border-[#E2E8F0] text-black rounded hover:bg-gray-400"
               onClick={downloadCSV}
             >
               <Image

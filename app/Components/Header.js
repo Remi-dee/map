@@ -7,13 +7,13 @@ const Header = () => {
   return (
     <div>
       <div className="flex flex-col font-inter">
-        <h1 className="text-xl font-normal leading-5 text-left mt-[8px] lg:mt-[40px]">
+        <h1 className="text-xl font-normal leading-5 text-left mt-[8px] lg:mt-[40px] dark:text-white">
           Welcome dear user! here's your summary
         </h1>
         <div className="lg:flex   lg:space-x-[12px] mt-[12px] lg:mt-[24px]">
           {" "}
-          <div className="flex flex-col space-y-2 mt-[24px]  p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
-            <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
+          <div className="flex flex-col space-y-2 mt-[24px]  p-[16px] rounded-[4px] dark:text-white dark:border-[#484554] border-2 w-full lg-w-[260px] dark:bg-[#484554]">
+            <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0 ">
               <h2>Total Events</h2>
               <Image
                 aria-hidden
@@ -23,7 +23,7 @@ const Header = () => {
                 height={20}
               />
             </div>
-            <div className="flex space-x-[8px] items-center">
+            <div className="flex space-x-[8px] items-center dark:bg-[#484554]">
               <p className="font-inter text-lg font-semibold leading-8 text-left">
                 {" "}
                 100,000
@@ -40,7 +40,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px] dark:text-white dark:border-[#484554] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Active Speakers</h2>
               <Image
@@ -68,7 +68,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px] dark:text-white dark:border-[#484554] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Registerations</h2>
               <Image
@@ -96,7 +96,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px]">
+          <div className="flex flex-col space-y-2 mt-[24px] p-[16px] rounded-[4px]  border-2 w-full lg-w-[260px] dark:text-white dark:border-[#484554] dark:bg-[#484554]">
             <div className="flex space-x-[4px] font-inter text-base font-semibold leading-6 text-left items-center mb-3 lg:mb-0">
               <h2>Total Revenue</h2>
               <Image

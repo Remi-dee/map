@@ -9,6 +9,7 @@ import Slide2 from "@/app/assets/Slide2.png";
 import Slide3 from "@/app/assets/Slide3.png";
 import ArrowLeft from "@/app/assets/Arrow_left.png";
 import ArrowRight from "@/app/assets/Arrow_right.png";
+import { useState, useEffect } from "react";
 
 import "./Carousel.css";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
@@ -35,8 +36,19 @@ const slidesData = [
 ];
 
 const Carousel = () => {
+  // Persist dark mode preference in local storage
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
   return (
-    <div className="w-full max-w-md lg:max-w-lg mx-auto mt-[21px] lg:mt-0 lg:h-[320px]">
+    <div className="w-full max-w-md lg:max-w-lg mx-auto mt-[21px] lg:mt-0 lg:h-[320px] dark:text-white">
       {" "}
       {/* Full width on mobile, limited on larger screens */}
       <Swiper
