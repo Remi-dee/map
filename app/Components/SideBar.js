@@ -23,6 +23,7 @@ const Sidebar = () => {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // Add state for mobile sidebar
 
   // Persist dark mode preference in local storage
   useEffect(() => {
@@ -48,6 +49,10 @@ const Sidebar = () => {
     setActiveTab(tabId);
   };
 
+  const toggleMobileSidebar = () => {
+    setIsMobileSidebarOpen(!isMobileSidebarOpen);
+  };
+
   const mobileTabs = [
     { name: "Home", icon: <HomeIcon className="h-6 w-6" />, id: "home" },
     {
@@ -69,6 +74,25 @@ const Sidebar = () => {
   ];
   return (
     <>
+      {/* Hamburger Icon for mobile */}
+      <div className="lg:hidden">
+        <button onClick={toggleMobileSidebar} className="p-2">
+          <svg
+            className="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
       <div
         className={`hidden lg:flex  ${
           isCollapsed ? "w-16" : ""
