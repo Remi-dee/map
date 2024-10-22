@@ -7,8 +7,8 @@ import "swiper/swiper-bundle.css";
 import Slide from "@/app/assets/Slide.png";
 import Slide2 from "@/app/assets/Slide2.png";
 import Slide3 from "@/app/assets/Slide3.png";
-import ArrowLeft from "@/app/assets/Arrow_left.png";
-import ArrowRight from "@/app/assets/Arrow_right.png";
+import ArrowLeft from "@/app/assets/arrow_left.png";
+import ArrowRight from "@/app/assets/arrow_right.png";
 import { useState, useEffect } from "react";
 
 import "./Carousel.css";
