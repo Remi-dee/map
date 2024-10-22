@@ -101,7 +101,7 @@ const Sidebar = () => {
       </div>
       <div
         className={`hidden lg:flex  ${
-          isCollapsed ? "w-16" : ""
+          isCollapsed ? "w-16 " : "p-[20px]"
         } h-[100] transition-width dark:bg-[#484554] dark:border-gray-700 duration-300  bg-white border-r border-[#F1F5F9]`}
       >
         {/* Sidebar content */}

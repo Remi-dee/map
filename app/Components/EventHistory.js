@@ -161,7 +161,7 @@ const EventHistory = () => {
         Event History
       </h1>
 
-      <div className="flex lg:gap-[48px] mb-4 lg:flex-row flex-col lg:items-center  lg:justify-between items-center w-full">
+      <div className="flex  mb-4 lg:flex-row flex-col lg:items-center  lg:justify-between items-center w-full">
         {/* Filters and Sorting */}
         <div className="flex lg:gap-[8px]  lg:flex-row flex-col gap-2 lg:items-center w-full">
           <input
@@ -198,12 +198,12 @@ const EventHistory = () => {
 
           <span>
             {" "}
-            <h1 className="text-[18px] mb-[10px] lg:mb-0     font-medium leading-5   dark:text-white ">
+            <h1 className="text-[18px] mb-[10px] lg:mb-0 w-[200px]    font-medium leading-5   dark:text-white ">
               Displaying {rowsPerPage} rows
             </h1>
           </span>
         </div>
-        <div className="flex items-center flex-col lg:flex-row gap-2 w-full  ">
+        <div className="flex lg:mr-[-52px] items-center flex-col lg:flex-row gap-2 w-full  ">
           <div className="flex justify-between items-center gap-2 mb-4 lg:mb-0 w-full lg:w-[240px] ">
             <span className="dark:text-[#FCF7FF]">Sort: </span>
             <select
