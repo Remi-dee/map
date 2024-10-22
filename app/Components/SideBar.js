@@ -18,12 +18,14 @@ import User from "@/app/assets/Profile.png";
 import Message from "@/app/assets/message.png";
 import { PiToggleRightFill } from "react-icons/pi";
 import { PiChatsCircle } from "react-icons/pi";
+import MobileNav from "./MobileNav";
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // Add state for mobile sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Persist dark mode preference in local storage
   useEffect(() => {
@@ -50,7 +52,7 @@ const Sidebar = () => {
   };
 
   const toggleMobileSidebar = () => {
-    setIsMobileSidebarOpen(!isMobileSidebarOpen);
+    setSidebarOpen((prev) => !prev);
   };
 
   const mobileTabs = [
@@ -233,7 +235,77 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="lg:hidden fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-[#484554] border-t dark:border-gray-700 shadow-lg p-2 flex justify-around">
+      {/*sidebar on mobile*/}
+      <div
+        className={`fixed inset-0 z-40 bg-white lg:bg-transparent lg:relative lg:inset-auto lg:w-auto transition-all duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0`}
+      >
+        <div
+          className={`lg:hidden fixed top-0 left-0 h-full bg-white w-64 transition-transform ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* Close Button on Mobile */}
+          <button
+            onClick={toggleMobileSidebar}
+            className="absolute top-4 right-4"
+          >
+            X
+          </button>
+
+          {/* Sidebar content */}
+          <ul className="mt-4">
+            <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+              <HomeIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                Home
+              </span>
+            </li>
+            <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+              <CalendarIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                Events
+              </span>
+            </li>
+            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+              <BiUserVoice className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                Speakers
+              </span>
+            </li>
+            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+              <BellIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                Notifications
+              </span>
+            </li>
+            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+              <PiChatsCircle className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
+                Messages
+              </span>
+            </li>
+            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+              <UserIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                Profile
+              </span>
+            </li>
+            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+              <CogIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                Settings
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        className={`fixed bottom-0 left-0 w-full p-4 bg-white sm:hidden ${
+          sidebarOpen ? "hidden" : "flex"
+        } justify-around`}
+      >
         {mobileTabs.map((tab) => (
           <button
             key={tab.id}
