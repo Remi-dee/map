@@ -2,7 +2,9 @@
 import { useState, useEffect } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { LiaToggleOnSolid } from "react-icons/lia";
-
+import Logo from "@/app/assets/Logo.png";
+import LogoMobile from "@/app/assets/logoMobile.png";
+import { GiCancel } from "react-icons/gi";
 import { PiToggleLeftDuotone } from "react-icons/pi";
 import {
   HomeIcon,
@@ -77,8 +79,10 @@ const Sidebar = () => {
   return (
     <>
       {/* Hamburger Icon for mobile */}
-      <div className="lg:hidden">
-        <button onClick={toggleMobileSidebar} className="p-2">
+      <div className="lg:hidden flex justify-between border-b p-[16px] border-b-[#E2E8F0] items-center ">
+        <Image src={Logo} alt="Logo" className="w-[64px] h-8" />
+
+        <button onClick={toggleMobileSidebar} className="">
           <svg
             className="w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -98,15 +102,20 @@ const Sidebar = () => {
       <div
         className={`hidden lg:flex  ${
           isCollapsed ? "w-16" : ""
-        } h-[100] transition-width dark:bg-[#484554] dark:border-gray-700 duration-300 p-[8px] bg-white border-r border-[#F1F5F9]`}
+        } h-[100] transition-width dark:bg-[#484554] dark:border-gray-700 duration-300  bg-white border-r border-[#F1F5F9]`}
       >
         {/* Sidebar content */}
-        <div
-          className={`flex flex-col justify-between ${
-            isCollapsed ? "w-14" : "w-[238px]"
-          }`}
-        >
+        <div className={`flex flex-col justify-between ${""}`}>
           <div>
+            {isCollapsed ? (
+              <Image
+                src={LogoMobile}
+                alt="Logo"
+                className="w-[32px] h-8 m-[14px]"
+              />
+            ) : (
+              <Image src={Logo} alt="Logo" className="w-[64px] h-8 m-[8px]" />
+            )}
             <ul className="mt-4 ">
               {" "}
               <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
@@ -237,67 +246,152 @@ const Sidebar = () => {
 
       {/*sidebar on mobile*/}
       <div
-        className={`fixed inset-0 z-40 bg-white lg:bg-transparent lg:relative lg:inset-auto lg:w-auto transition-all duration-300 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed inset-0 z-40  bg-white lg:bg-transparent lg:relative lg:inset-auto lg:w-auto transition-all duration-300 ${
+          sidebarOpen ? "translate-x-0 w-full" : "-translate-x-full"
         } lg:translate-x-0`}
       >
         <div
-          className={`lg:hidden fixed top-0 left-0 h-full bg-white w-64 transition-transform ${
+          className={`lg:hidden dark:bg-[#484554] dark:border-gray-700 fixed top-0 left-0 h-full w-full bg-white p-[16px] transition-transform ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          {/* Close Button on Mobile */}
-          <button
-            onClick={toggleMobileSidebar}
-            className="absolute top-4 right-4"
-          >
-            X
-          </button>
+          <div className="flex justify-between items-center">
+            {" "}
+            <Image src={Logo} alt="Logo" className="w-[64px] h-8" />
+            {/* Close Button on Mobile */}
+            <button
+              className="w-[28px] font-medium  border dark:bg-white text-[#334155] rounded-full border-[#E2E8F0]"
+              onClick={() => setSidebarOpen(false)}
+            >
+              {/* <GiCancel className="h-6 w-6 border rounded-full border-[#E2E8F0]" /> */}
+              <span>x</span>
+            </button>
+          </div>
 
           {/* Sidebar content */}
-          <ul className="mt-4">
+          <ul className="mt-4 ">
+            {" "}
             <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
               <HomeIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                Home
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                  Home
+                </span>
+              )}
             </li>
             <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
               <CalendarIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                Events
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                  Events
+                </span>
+              )}
             </li>
-            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
               <BiUserVoice className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                Speakers
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                  Speakers
+                </span>
+              )}
             </li>
             <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
               <BellIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                Notifications
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                  Notifications
+                </span>
+              )}
             </li>
             <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
               <PiChatsCircle className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
-                Messages
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
+                  Messages
+                </span>
+              )}
             </li>
             <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
               <UserIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                Profile
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                  Profile
+                </span>
+              )}
             </li>
             <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
               <CogIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                Settings
-              </span>
+              {!isCollapsed && (
+                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                  Settings
+                </span>
+              )}
             </li>
+            <button
+              className="p-4 flex items-center hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] w-full"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+            >
+              {/* Collapse/Expand icon */}
+              <span
+                className={`${
+                  isCollapsed ? "rotate-180" : ""
+                }flex items-center  transition-transform`}
+              >
+                <MdKeyboardDoubleArrowLeft
+                  className={` ${
+                    isCollapsed && " rotate-180"
+                  } h-6 w-6 text-gray-500 dark:text-[#FFFFFF]`}
+                />
+                <span
+                  className={`${
+                    isCollapsed && "hidden rotate-180"
+                  } ml-4 text-[14px] font-normal leading-[20px] text-left`}
+                >
+                  Collapse
+                </span>
+              </span>
+            </button>
+            <div className=" w-full">
+              <label className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
+                <button onClick={toggleDarkMode} className=" ">
+                  {isDarkMode ? (
+                    <PiToggleRightFill className="text-[#8576FF]  h-6 w-6 " />
+                  ) : (
+                    <PiToggleRightFill className="text-[#E2E8F0] rotate-180 h-6 w-6" />
+                  )}
+                </button>
+
+                <span
+                  className={`${
+                    isCollapsed && "hidden rotate-180"
+                  } ml-4 text-[14px] font-normal leading-[20px] text-left`}
+                >
+                  Dark mode
+                </span>
+              </label>
+            </div>
+            <div className="p-4 dark:text-[#FFFFFF] hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+              <div className="flex items-center space-x-2">
+                <Image
+                  src={User}
+                  alt="User avatar"
+                  className={`${
+                    isCollapsed ? "w-6 h-6" : "w-8 h-8"
+                  }   rounded-full`}
+                />
+                {!isCollapsed && (
+                  <div>
+                    <span className="text-[12px] font-normal leading-[16px] text-left">
+                      Rudra Devi
+                    </span>
+                    <br />
+                    <span className="text-xs text-[12px] font-normal leading-[16px] text-left">
+                      rudra.devi@gmail.com
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
           </ul>
         </div>
       </div>

@@ -19,7 +19,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className="min-h-screen flex pt-0 px-[20px] lg:p-0 w-full p-2 font-inter gap-[28px] dark:bg-[#383544] dark:border-gray-700">
+    <div className="min-h-screen lg:flex pt-0 px-[20px] lg:p-0 w-full p-2 font-inter gap-[28px] dark:bg-[#383544] dark:border-gray-700">
       <Sidebar />
 
       <main className="">
