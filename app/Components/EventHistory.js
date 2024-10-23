@@ -8,6 +8,7 @@ import Download from "../assets/download.png";
 import Elipse from "../assets/elipse.png";
 import { MdArrowForwardIos } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
+import EventModal from "./EventModal";
 
 // Mock data
 const mockData = [
@@ -79,6 +80,8 @@ const EventHistory = () => {
   const [sortOrder, setSortOrder] = useState("Most Recent");
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
   const pages = [...Array(totalPages).keys()].map((i) => i + 1); // Array of page numbers
@@ -153,6 +156,38 @@ const EventHistory = () => {
     document.body.appendChild(link); // Required for Firefox
     link.click();
     document.body.removeChild(link);
+  };
+
+  const openModal = (event) => {
+    setSelectedEvent(event);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleEdit = () => {
+    // Handle the edit functionality
+    console.log("Edit event:", selectedEvent);
+  };
+
+  const handleDelete = () => {
+    const updatedData = mockData.filter(
+      (event) => event.name !== selectedEvent.name
+    );
+    setFilteredData(updatedData);
+    closeModal();
+  };
+
+  const handleMarkAsCompleted = () => {
+    const updatedData = mockData.map((event) =>
+      event.name === selectedEvent.name
+        ? { ...event, status: "Completed" }
+        : event
+    );
+    setFilteredData(updatedData);
+    closeModal();
   };
 
   return (
@@ -260,7 +295,11 @@ const EventHistory = () => {
         </thead>
         <tbody className="text-[#334155] dark:text-[#FCF7FF] dark:bg-[#484554] ">
           {currentRows.map((event, index) => (
-            <tr key={index} className="">
+            <tr
+              key={index}
+              onClick={() => openModal(event)}
+              className="cursor-pointer hover:bg-gray-100"
+            >
               <td className="p-2">{event.name}</td>
               <td className="p-2">{event.date}</td>
               <td className="p-2">{event.speaker}</td>
@@ -348,6 +387,16 @@ const EventHistory = () => {
           </select>
         </div>
       </div>
+
+      {/* Modal for event details */}
+      <EventModal
+        event={selectedEvent}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onMarkAsCompleted={handleMarkAsCompleted}
+      />
     </div>
   );
 };
