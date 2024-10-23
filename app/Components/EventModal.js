@@ -34,14 +34,14 @@ const EventModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <div className="flex justify-between items-center mb-4">
+      <div className="bg-white rounded-lg w-full max-w-md">
+        <div className="flex justify-between p-6 items-center mb-4">
           <h2 className="text-xl font-bold">
             {isEditing ? "Edit Event" : event.name}
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-500 hover:text-gray-700 border text-[15px] border-[#E2E8F0] rounded-full w-6"
           >
             X
           </button>
@@ -50,7 +50,7 @@ const EventModal = ({
         {/* Conditionally render inputs for editing mode */}
         {isEditing ? (
           <>
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label className="block text-gray-700 font-bold mb-2">Name</label>
               <input
                 type="text"
@@ -60,7 +60,7 @@ const EventModal = ({
                 className="w-full px-3 py-2 border border-gray-300 rounded"
               />
             </div>
-            <div className="mb-4">
+            <div className=" ml-6">
               <label className="block text-gray-700 font-bold mb-2">Date</label>
               <input
                 type="date"
@@ -70,7 +70,7 @@ const EventModal = ({
                 className="w-full px-3 py-2 border border-gray-300 rounded"
               />
             </div>
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label className="block text-gray-700 font-bold mb-2">
                 Speaker
               </label>
@@ -112,7 +112,7 @@ const EventModal = ({
           </>
         )}
 
-        <div className="mt-4 flex justify-end space-x-2">
+        <div className="mt-4 flex justify-end space-x-2 bg-[#F8FAFC] p-[24px] ">
           {/* Conditionally render Edit/Save button */}
           {isEditing ? (
             <button
@@ -124,20 +124,20 @@ const EventModal = ({
           ) : (
             <button
               onClick={handleEditClick}
-              className="px-4 py-2 bg-blue-500 text-white rounded"
+              className="px-4 py-2 bg-white text-[#334155] rounded border border-[#E2E8F0]"
             >
               Edit
             </button>
           )}
           <button
             onClick={onDelete}
-            className="px-4 py-2 bg-red-500 text-white rounded"
+            className="px-4 py-2 bg-[#F43F5E] text-white rounded"
           >
             Delete
           </button>
           <button
             onClick={onMarkAsCompleted}
-            className="px-4 py-2 bg-purple-500 text-white rounded"
+            className="px-4 py-2 bg-[#8576FF] text-white rounded"
           >
             Mark as Completed
           </button>
