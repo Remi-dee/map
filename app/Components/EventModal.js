@@ -38,7 +38,7 @@ const EventModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg w-full max-w-md">
+      <div className="bg-white rounded-lg w-full max-w-md dark:bg-[#484554] dark:text-[#FCF7FF]">
         <div
           className={`flex justify-between p-6 items-center ${
             isEditing ? "mb-4" : ""
@@ -50,7 +50,7 @@ const EventModal = ({
 
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 border text-[15px] border-[#E2E8F0] rounded-full w-6"
+            className="text-gray-500 hover:text-gray-700 border dark:bg-[#ADA9BB] text-[15px] dark:border-[#484554] border-[#E2E8F0] rounded-full w-6"
           >
             X
           </button>
@@ -133,7 +133,7 @@ const EventModal = ({
           </div>
         )}
 
-        <div className="mt-4 flex justify-end space-x-2 bg-[#F8FAFC] p-[24px] ">
+        <div className="mt-4 flex justify-end space-x-2 dark:bg-[#ADA9BB] bg-[#F8FAFC] p-[24px] ">
           {/* Conditionally render Edit/Save button */}
           {isEditing ? (
             <button
