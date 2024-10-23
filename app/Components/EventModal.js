@@ -37,7 +37,7 @@ const EventModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="px-4 lg:mx-0 fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg w-full max-w-md dark:bg-[#484554] dark:text-[#FCF7FF]">
         <div
           className={`flex justify-between p-6 items-center ${

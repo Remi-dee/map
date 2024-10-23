@@ -211,7 +211,7 @@ const EventHistory = () => {
   };
 
   return (
-    <div className="w-full mt-[21px] lg:mt-[28px]">
+    <div className="w-full mt-[21px] lg:mt-[28px] mb-[85px] lg:mb-0">
       <h1 className="text-xl font-medium leading-5 text-left mb-[21px] dark:text-white  lg:mb-[6px]">
         Event History
       </h1>
