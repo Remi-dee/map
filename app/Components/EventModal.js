@@ -125,15 +125,11 @@ const EventModal = ({
             </div>
           </div>
         ) : (
-          <div className="mx-6">
+          <div className="mx-6 font-inter text-sm font-normal leading-5 text-left">
             {/* Display event details when not in editing mode */}
 
-            <p>
-              <strong>Speaker:</strong> {event.speaker}
-            </p>
-            <p>
-              <strong>Status:</strong> {event.status}
-            </p>
+            <p>1 Guest Speaker: {event.speaker}</p>
+            <p>300 Attendees</p>
           </div>
         )}
 
