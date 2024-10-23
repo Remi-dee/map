@@ -190,6 +190,14 @@ const EventHistory = () => {
     closeModal();
   };
 
+  const handleSave = (updatedEvent) => {
+    const updatedData = filteredData.map((event) =>
+      event.name === updatedEvent.name ? updatedEvent : event
+    );
+    setFilteredData(updatedData);
+    closeModal();
+  };
+
   return (
     <div className="w-full mt-[21px] lg:mt-[28px]">
       <h1 className="text-xl font-medium leading-5 text-left mb-[21px] dark:text-white  lg:mb-[6px]">
@@ -389,14 +397,17 @@ const EventHistory = () => {
       </div>
 
       {/* Modal for event details */}
-      <EventModal
-        event={selectedEvent}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-        onMarkAsCompleted={handleMarkAsCompleted}
-      />
+      {isModalOpen && (
+        <EventModal
+          event={selectedEvent}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          onMarkAsCompleted={handleMarkAsCompleted}
+          onSave={handleSave}
+        />
+      )}
     </div>
   );
 };
