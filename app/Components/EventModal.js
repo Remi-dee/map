@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Avatar from "@/app/assets/avatar.png";
+import Avatar2 from "@/app/assets/avatar2.png";
+import Avatar3 from "@/app/assets/avatar3.png";
+import Image from "next/image";
 
 const EventModal = ({
   onSave,
@@ -35,10 +39,15 @@ const EventModal = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg w-full max-w-md">
-        <div className="flex justify-between p-6 items-center mb-4">
-          <h2 className="text-xl font-bold">
+        <div
+          className={`flex justify-between p-6 items-center ${
+            isEditing ? "mb-4" : ""
+          }`}
+        >
+          <h2 className="text-xl  font-bold">
             {isEditing ? "Edit Event" : event.name}
           </h2>
+
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 border text-[15px] border-[#E2E8F0] rounded-full w-6"
@@ -47,9 +56,27 @@ const EventModal = ({
           </button>
         </div>
 
+        <p className=" -mt-6 ml-6 font-inter text-sm font-normal leading-5 text-left">
+          {" "}
+          {isEditing ? "" : event.date}
+        </p>
+
+        {!isEditing && (
+          <div className="flex ml-6 mt-6">
+            {" "}
+            <Image src={Avatar} alt="Logo" className="w-[32px] z-50 h-8" />
+            <Image
+              src={Avatar2}
+              alt="Logo"
+              className="w-[32px]z-5 z-10 h-8  -ml-4"
+            />
+            <Image src={Avatar3} alt="Logo" className="w-[32px] h-8 -ml-4" />
+          </div>
+        )}
+
         {/* Conditionally render inputs for editing mode */}
         {isEditing ? (
-          <>
+          <div className="mx-6">
             <div className="mb-4 ">
               <label className="block text-gray-700 font-bold mb-2">Name</label>
               <input
@@ -60,7 +87,7 @@ const EventModal = ({
                 className="w-full px-3 py-2 border border-gray-300 rounded"
               />
             </div>
-            <div className=" ml-6">
+            <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2">Date</label>
               <input
                 type="date"
@@ -70,7 +97,7 @@ const EventModal = ({
                 className="w-full px-3 py-2 border border-gray-300 rounded"
               />
             </div>
-            <div className="mb-4 ">
+            <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2">
                 Speaker
               </label>
@@ -82,7 +109,7 @@ const EventModal = ({
                 className="w-full px-3 py-2 border border-gray-300 rounded"
               />
             </div>
-            <div className="mb-4">
+            <div className="mb-4 ">
               <label className="block text-gray-700 font-bold mb-2">
                 Status
               </label>
@@ -96,20 +123,18 @@ const EventModal = ({
                 <option value="Completed">Completed</option>
               </select>
             </div>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="mx-6">
             {/* Display event details when not in editing mode */}
-            <p>
-              <strong>Date:</strong> {event.date}
-            </p>
+
             <p>
               <strong>Speaker:</strong> {event.speaker}
             </p>
             <p>
               <strong>Status:</strong> {event.status}
             </p>
-          </>
+          </div>
         )}
 
         <div className="mt-4 flex justify-end space-x-2 bg-[#F8FAFC] p-[24px] ">
