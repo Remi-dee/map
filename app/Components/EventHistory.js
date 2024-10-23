@@ -17,60 +17,70 @@ const mockData = [
     date: "2024-10-15",
     speaker: "Jane Doe",
     status: "Completed",
+    id: 0,
   },
   {
     name: "Blockchain Revolution Conference",
     date: "2024-11-05",
     speaker: "Dr. Peter Smith",
     status: "In Progress",
+    id: 1,
   },
   {
     name: "AI in Healthcare Symposium",
     date: "2024-12-01",
     speaker: "Dr. Aisha Malik",
     status: "Completed",
+    id: 2,
   },
   {
     name: "Future of Fintech Forum",
     date: "2024-10-25",
     speaker: "John Lee",
     status: "Completed",
+    id: 3,
   },
   {
     name: "Data Analytics in Business",
     date: "2024-11-12",
     speaker: "Rachel Moore",
     status: "Completed",
+    id: 4,
   },
   {
     name: "Sustainable Energy Expo",
     date: "2024-09-28",
     speaker: "Prof. Alan Green",
     status: "In Progress",
+    id: 5,
   },
   {
     name: "Web3 Interfaces Workshop",
     date: "2024-10-10",
     speaker: "Kevin Adams",
     status: "In Progress",
+    id: 6,
   },
   {
     name: "Cybersecurity for Startups",
     date: "2024-11-19",
     speaker: "Emily Zhang",
     status: "Completed",
+    id: 7,
   },
   {
     name: "Smart Cities Forum",
     date: "2024-10-18",
     speaker: "Dr. Maria Hernandez",
     status: "In Progress",
+    id: 8,
   },
   {
     name: "Tech Safari Mixer",
     date: "2024-09-30",
     speaker: "Kevin Adams",
     status: "In Progress",
+    id: 9,
   },
 ];
 
@@ -174,7 +184,7 @@ const EventHistory = () => {
 
   const handleDelete = () => {
     const updatedData = mockData.filter(
-      (event) => event.name !== selectedEvent.name
+      (event) => event.id !== selectedEvent.id
     );
     setFilteredData(updatedData);
     closeModal();
@@ -191,9 +201,11 @@ const EventHistory = () => {
   };
 
   const handleSave = (updatedEvent) => {
+    // Update the selected event in the filtered data list based on the unique id
     const updatedData = filteredData.map((event) =>
-      event.name === updatedEvent.name ? updatedEvent : event
+      event.id === updatedEvent.id ? updatedEvent : event
     );
+
     setFilteredData(updatedData);
     closeModal();
   };

@@ -92,8 +92,7 @@ const EventModal = ({
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded"
               >
-                <option value="Upcoming">Upcoming</option>
-                <option value="Ongoing">Ongoing</option>
+                <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
               </select>
             </div>
