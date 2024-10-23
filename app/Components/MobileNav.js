@@ -44,12 +44,12 @@ const MobileNav = ({ sidebarOpen, setSidebarOpen }) => {
       {/* Mobile sidebar */}
       {sidebarOpen && (
         <div
-          className={`fixed inset-0 z-40 bg-white lg:bg-transparent lg:relative lg:inset-auto lg:w-auto transition-all duration-300 ${
+          className={`fixed inset-0 z-40 dark:bg-[#383544] bg-white lg:bg-transparent lg:relative lg:inset-auto lg:w-auto transition-all duration-300 ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           } lg:translate-x-0`}
         >
           <div
-            className={`lg:hidden fixed top-0 left-0 h-full bg-white w-64 transition-transform ${
+            className={`lg:hidden fixed top-0 left-0 h-full dark:bg-[#383544] bg-white w-64 transition-transform ${
               sidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >

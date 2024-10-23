@@ -396,7 +396,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div
-        className={`fixed bottom-0 left-0 w-full p-4 bg-white sm:hidden ${
+        className={`fixed z-50 bottom-0 left-0 w-full border-t border-[#F3F4F6] dark:bg-[#383544] p-4 bg-white sm:hidden ${
           sidebarOpen ? "hidden" : "flex"
         } justify-around`}
       >
@@ -406,7 +406,7 @@ const Sidebar = () => {
             onClick={() => handleTabClick(tab.id)}
             className={`flex flex-col items-center space-y-1 ${
               activeTab === tab.id
-                ? "text-[#8576FF] dark:text-[#FFFFFF]"
+                ? "text-[#8576FF]  border-[#8576FF] border-t-2 "
                 : "text-gray-500 dark:text-gray-300"
             }`}
           >
