@@ -365,7 +365,7 @@ const EventHistory = () => {
           <div key={index} className="border-b py-2">
             {/* Event Header - Click to Expand/Collapse */}
             <div
-              className="flex justify-between items-center cursor-pointer"
+              className="flex justify-between items-center cursor-pointer text-[#334155] dark:text-[#FCF7FF] dark:bg-[#484554] "
               onClick={() => toggleEventDetails(index)}
             >
               <p className="text-[16px] font-semibold">{event.name}</p>
@@ -382,7 +382,7 @@ const EventHistory = () => {
 
             {/* Expandable Content (Speaker and Date) */}
             <div
-              className={`mt-2 text-sm ${
+              className={`mt-2 text-sm flex justify-between ${
                 expandedEvent === index ? "block" : "hidden"
               }`}
             >
