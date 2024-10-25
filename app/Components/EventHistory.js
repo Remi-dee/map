@@ -360,12 +360,26 @@ const EventHistory = () => {
       </table>
 
       {/* Mobile Version with Collapse Functionality */}
-      <div className="block lg:hidden">
+      <div className="block lg:hidden   -mx-5">
+        <div className="">
+          <div className="bg-gray-200 dark:text-[#FFFFFF] dark:bg-[#6A6676] flex justify-between">
+            <div className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
+              Event Name
+            </div>
+            <div className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
+              Status
+            </div>
+          </div>
+        </div>
+
         {currentRows.map((event, index) => (
-          <div key={index} className="border-b py-2">
+          <div
+            key={index}
+            className="w-full py-2 px-4  text-[#334155] dark:text-[#FCF7FF] dark:bg-[#484554] "
+          >
             {/* Event Header - Click to Expand/Collapse */}
             <div
-              className="flex justify-between items-center cursor-pointer text-[#334155] dark:text-[#FCF7FF] dark:bg-[#484554] "
+              className="flex justify-between items-center cursor-pointer  "
               onClick={() => toggleEventDetails(index)}
             >
               <p className="text-[16px] font-semibold">{event.name}</p>
