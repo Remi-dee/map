@@ -326,7 +326,7 @@ const EventHistory = () => {
 
               <td className="p-2">
                 <span
-                  className={`relative inline-flex items-center px-[8px] py-[4px] text-xs rounded-[100px] ${
+                  className={`relative inline-flex items-center min-w-[80px] lg:min-w-[0px] px-[8px] py-[4px] text-xs rounded-[100px] ${
                     event.status === "Completed"
                       ? "bg-[#D1FAE5] text-[#10B981]"
                       : "bg-[#DBEAFE] text-[#3B82F6]"
@@ -334,7 +334,7 @@ const EventHistory = () => {
                 >
                   {/* Circle indicator inside the status */}
                   <span
-                    className={`absolute left-2 inline-block w-[8px] h-[8px] rounded-full ${
+                    className={`hidden absolute left-2 lg:inline-block w-[8px] h-[8px] rounded-full ${
                       event.status === "Completed"
                         ? "bg-[#10B981]" // Green for completed
                         : "bg-[#3B82F6]" // Blue for in progress
@@ -342,7 +342,7 @@ const EventHistory = () => {
                   ></span>
 
                   {/* Shift text to make room for the circle */}
-                  <span className="ml-4">{event.status}</span>
+                  <span className="lg:ml-4">{event.status}</span>
                 </span>
               </td>
             </tr>
