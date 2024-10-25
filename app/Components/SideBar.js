@@ -79,7 +79,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Hamburger Icon for mobile */}
-      <div className="lg:hidden flex justify-between border-b p-[16px] border-b-[#E2E8F0] items-center ">
+      <div className="-mx-5 lg:hidden flex justify-between border-b p-[16px] border-b-[#E2E8F0] items-center ">
         <Image src={Logo} alt="Logo" className="w-[64px] h-8" />
 
         <button onClick={toggleMobileSidebar} className="">
