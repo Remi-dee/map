@@ -382,6 +382,13 @@ const EventHistory = () => {
               className="flex justify-between items-center cursor-pointer p-3 "
               onClick={() => toggleEventDetails(index)}
             >
+              <span
+                className={` text-[32px] transition-transform duration-300 transform ${
+                  expandedEvent === index ? "rotate-90" : "rotate-0"
+                }`}
+              >
+                &#8250;
+              </span>{" "}
               <p className="text-[16px] font-semibold">{event.name}</p>
               <span
                 className={`relative inline-flex items-center px-[8px] py-[4px] text-xs rounded-full ${
