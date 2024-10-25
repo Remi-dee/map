@@ -92,6 +92,7 @@ const EventHistory = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [expandedEvent, setExpandedEvent] = useState(null);
 
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
   const pages = [...Array(totalPages).keys()].map((i) => i + 1); // Array of page numbers
@@ -142,6 +143,14 @@ const EventHistory = () => {
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
+
+  const toggleEventDetails = (index) => {
+    if (expandedEvent === index) {
+      setExpandedEvent(null); // Collapse the expanded event
+    } else {
+      setExpandedEvent(index); // Expand the selected event
+    }
+  };
 
   // CSV download logic
   const downloadCSV = () => {
@@ -296,7 +305,7 @@ const EventHistory = () => {
       </div>
 
       {/* Table */}
-      <table className="min-w-full table-auto ">
+      <table className="min-w-full hidden lg:table ">
         <thead>
           <tr className="bg-gray-200 dark:text-[#FFFFFF] dark:bg-[#6A6676]">
             <th className="p-4  text-[12px] font-semibold leading-[16px] text-left dark:text-[#FFFFFF] text-[#64748B]">
@@ -349,6 +358,40 @@ const EventHistory = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Mobile Version with Collapse Functionality */}
+      <div className="block lg:hidden">
+        {currentRows.map((event, index) => (
+          <div key={index} className="border-b py-2">
+            {/* Event Header - Click to Expand/Collapse */}
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => toggleEventDetails(index)}
+            >
+              <p className="text-[16px] font-semibold">{event.name}</p>
+              <span
+                className={`relative inline-flex items-center px-[8px] py-[4px] text-xs rounded-full ${
+                  event.status === "Completed"
+                    ? "bg-[#D1FAE5] text-[#10B981]"
+                    : "bg-[#DBEAFE] text-[#3B82F6]"
+                }`}
+              >
+                <span>{event.status}</span>
+              </span>
+            </div>
+
+            {/* Expandable Content (Speaker and Date) */}
+            <div
+              className={`mt-2 text-sm ${
+                expandedEvent === index ? "block" : "hidden"
+              }`}
+            >
+              <p className="font-medium">Speaker: {event.speaker}</p>
+              <p>Date: {event.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Pagination */}
 
