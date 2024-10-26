@@ -12,7 +12,13 @@ import ArrowRight from "@/app/assets/arrow_right.png";
 import { useState, useEffect } from "react";
 
 import "./Carousel.css";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 
 const slidesData = [
   {
@@ -52,12 +58,12 @@ const Carousel = () => {
       {" "}
       {/* Full width on mobile, limited on larger screens */}
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={20}
         pagination={{ clickable: true }}
         slidesPerView={1}
         autoplay={{
-          delay: 400,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         navigation={true}
