@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { LiaToggleOnSolid } from "react-icons/lia";
-import Logo from "@/app/assets/Logo.png";
+import Dashboard from "@/app/assets/Sidebar/Dashboard.svg";
+
 import LogoMobile from "@/app/assets/logoMobile.png";
 import { GiCancel } from "react-icons/gi";
 import { PiToggleLeftDuotone } from "react-icons/pi";
@@ -21,6 +22,7 @@ import Message from "@/app/assets/message.png";
 import { PiToggleRightFill } from "react-icons/pi";
 import { PiChatsCircle } from "react-icons/pi";
 import MobileNav from "./MobileNav";
+import Logo from "./Logo";
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -114,15 +116,15 @@ const Sidebar = () => {
                 className="w-[32px] h-8 m-[14px]"
               />
             ) : (
-              <Image src={Logo} alt="Logo" className="w-[64px] h-8 m-[8px]" />
+            <Logo />
             )}
             <ul className="mt-4 ">
               {" "}
               <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-                <HomeIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+              <Image src={Map1} alt="Dashboard" className="w-[54px] h-auto  " />
                 {!isCollapsed && (
                   <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                    Home
+                   Dashboard
                   </span>
                 )}
               </li>
