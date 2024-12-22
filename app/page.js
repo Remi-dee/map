@@ -7,6 +7,7 @@ import EventHistory from "./Components/EventHistory";
 import Sidebar from "./Components/SideBar";
 import { useState, useEffect } from "react";
 import QuoteFlow from "./Components/QuoteFlow";
+import RequestForQuote from "./Components/RequestForQuote";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -25,7 +26,7 @@ export default function Home() {
 
       <main className="">
         <Header />
-        <QuoteFlow />
+        <RequestForQuote />
       </main>
     </div>
   );
