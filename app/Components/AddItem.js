@@ -39,7 +39,8 @@ const AddItemsSection = () => {
             [field]: value,
             amount:
               field === "quantity" || field === "price"
-                ? item.quantity * item.price
+                ? (field === "quantity" ? value : item.quantity) *
+                  (field === "price" ? value : item.price)
                 : item.amount,
           }
         : item
@@ -96,7 +97,7 @@ const AddItemsSection = () => {
 
           <input
             type="number"
-            className="col-span-2 p-2 border rounded"
+            className="col-span-2 p-2 border rounded appearance-none"
             value={item.quantity}
             onChange={(e) =>
               handleItemChange(
@@ -107,18 +108,23 @@ const AddItemsSection = () => {
             }
           />
 
-          <input
-            type="number"
-            className="col-span-2 p-2 border rounded"
-            value={item.price}
-            onChange={(e) =>
-              handleItemChange(
-                item.id,
-                "price",
-                parseFloat(e.target.value) || 0
-              )
-            }
-          />
+          <div className="col-span-2 relative">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+              $
+            </span>
+            <input
+              type="number"
+              className="w-full pl-7 p-2 border rounded appearance-none"
+              value={item.price}
+              onChange={(e) =>
+                handleItemChange(
+                  item.id,
+                  "price",
+                  parseFloat(e.target.value) || 0
+                )
+              }
+            />
+          </div>
 
           <input
             type="date"
