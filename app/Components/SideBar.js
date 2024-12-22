@@ -2,7 +2,13 @@
 import { useState, useEffect } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { LiaToggleOnSolid } from "react-icons/lia";
-import Dashboard from "@/app/assets/Sidebar/Dashboard.svg";
+import Dashboard from "@/app/assets/sidebar/dashboard.svg";
+import Procurement from "@/app/assets/sidebar/procurement.svg";
+import Calender from "@/app/assets/sidebar/calender.svg";
+import Communication from "@/app/assets/sidebar/communication.svg";
+import Finance from "@/app/assets/sidebar/finance.svg";
+import Inventory from "@/app/assets/sidebar/inventory.svg";
+import Contract from "@/app/assets/sidebar/contract.svg";
 
 import LogoMobile from "@/app/assets/logoMobile.png";
 import { GiCancel } from "react-icons/gi";
@@ -13,6 +19,8 @@ import {
   BellIcon,
   UserIcon,
   CogIcon,
+  ChatBubbleBottomCenterTextIcon,
+  AnnotationIcon,
 } from "@heroicons/react/outline"; // Use any icons
 import { BiUserVoice } from "react-icons/bi";
 import DoubleArrow from "@/app/assets/doubleArrowRight.png";
@@ -116,55 +124,110 @@ const Sidebar = () => {
                 className="w-[32px] h-8 m-[14px]"
               />
             ) : (
-            <Logo />
+              <Logo />
             )}
             <ul className="mt-4 ">
               {" "}
               <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-              <Image src={Map1} alt="Dashboard" className="w-[54px] h-auto  " />
+                <Image
+                  src={Dashboard}
+                  alt="Dashboard"
+                  className="w-6 h-auto  "
+                />
                 {!isCollapsed && (
                   <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                   Dashboard
+                    Dashboard
                   </span>
                 )}
               </li>
               <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-                <CalendarIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+                <Image
+                  src={Inventory}
+                  alt="Dashboard"
+                  className="w-6 h-auto  "
+                />
                 {!isCollapsed && (
                   <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                    Events
+                    Inventory
                   </span>
                 )}
               </li>
               <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
-                <BiUserVoice className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+                <Image
+                  src={Procurement}
+                  alt="Dashboard"
+                  className="w-6 h-auto  "
+                />
                 {!isCollapsed && (
                   <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                    Speakers
+                    Procurement
                   </span>
                 )}
               </li>
               <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-                <BellIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
                 {!isCollapsed && (
-                  <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                    Notifications
+                  <span className="ml-[38px] text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                    Quotes
+                  </span>
+                )}
+              </li>
+              <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+                {!isCollapsed && (
+                  <span className="ml-[38px] text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
+                    Orders
                   </span>
                 )}
               </li>
               <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
-                <PiChatsCircle className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+                <Image src={Finance} alt="Dashboard" className="w-6 h-auto  " />
                 {!isCollapsed && (
                   <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
-                    Messages
+                    Finance
                   </span>
                 )}
               </li>
               <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
-                <UserIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
+                <AnnotationIcon className="h-6 w-6 text-white bg-gray-500 dark:text-[#FFFFFF]" />
+
                 {!isCollapsed && (
                   <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                    Profile
+                    Communication
+                  </span>
+                )}
+              </li>
+              <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <Image
+                  src={Calender}
+                  alt="Dashboard"
+                  className="w-6 h-auto  "
+                />
+                {!isCollapsed && (
+                  <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                    Calender
+                  </span>
+                )}
+              </li>
+              <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <Image
+                  src={Contract}
+                  alt="Dashboard"
+                  className="w-6 h-auto  "
+                />
+                {!isCollapsed && (
+                  <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                    Contracts
+                  </span>
+                )}
+              </li>
+              <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <Image
+                  src={Contract}
+                  alt="Dashboard"
+                  className="w-6 h-auto  "
+                />
+                {!isCollapsed && (
+                  <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                    Support
                   </span>
                 )}
               </li>
