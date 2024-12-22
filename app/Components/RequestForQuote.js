@@ -7,6 +7,7 @@ import {
   updateQuoteDetails,
 } from "../redux/feature/quoteSlice";
 import { useState } from "react";
+import AddItemsSection from "./AddItem";
 
 const RequestForQuote = () => {
   const dispatch = useDispatch();
@@ -88,8 +89,8 @@ const RequestForQuote = () => {
           </h7>
         </div>
       </div>
-
-      <h2 className="text-lg font-semibold mb-4">Add Items</h2>
+      <AddItemsSection />
+      {/* <h2 className="text-lg font-semibold mb-4">Add Items</h2>
       <table className="w-full mb-4 border-collapse">
         <thead>
           <tr>
@@ -155,7 +156,7 @@ const RequestForQuote = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
       <button
         onClick={handleAddItem}
         className="bg-blue-500 text-white px-4 py-2 rounded-md"
