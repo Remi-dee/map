@@ -6,6 +6,7 @@ import BarChart from "./Components/BarChart";
 import EventHistory from "./Components/EventHistory";
 import Sidebar from "./Components/SideBar";
 import { useState, useEffect } from "react";
+import QuoteFlow from "./Components/QuoteFlow";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -24,16 +25,7 @@ export default function Home() {
 
       <main className="">
         <Header />
-        <div className="mt-[34px] mb-[28px] ">
-          <h1 className="text-xl font-medium leading-5 text-left mb-[12px] dark:text-white  lg:mb-[14px]">
-            Event Registrations per month
-          </h1>
-          <div className="flex-col  flex lg:flex-row lg:justify-between w-full lg:gap-20">
-            <BarChart />
-            <Carousel />
-          </div>
-          <EventHistory />
-        </div>
+        <QuoteFlow />
       </main>
     </div>
   );
