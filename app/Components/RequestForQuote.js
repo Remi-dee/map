@@ -8,6 +8,7 @@ import {
 } from "../redux/feature/quoteSlice";
 import { useState } from "react";
 import AddItemsSection from "./AddItem";
+import TermsAndAttachments from "./TermsAndAttachment";
 
 const RequestForQuote = () => {
   const dispatch = useDispatch();
@@ -90,6 +91,7 @@ const RequestForQuote = () => {
         </div>
       </div>
       <AddItemsSection />
+      <TermsAndAttachments />
       {/* <h2 className="text-lg font-semibold mb-4">Add Items</h2>
       <table className="w-full mb-4 border-collapse">
         <thead>
