@@ -20,7 +20,7 @@ export default function Home() {
     <div className="min-h-screen flex pt-0 px-[20px] lg:p-0 w-full font-inter gap-[28px] dark:bg-[#383544] dark:border-gray-700">
       <Sidebar />
 
-      <main className="">
+      <main className="flex-1 w-full">
         <Navbar />
         <WorkflowContainer />
       </main>

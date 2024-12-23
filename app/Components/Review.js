@@ -10,7 +10,7 @@ import Image from "next/image";
 import AwaitingQuote from "./AwatingQuote";
 import { startAwaiting } from "../redux/feature/itemsSlice";
 const ReviewComponent = ({
-  quoteDetails: requestInfo,
+  requestInfo,
   termsAndAttachmentData: terms,
   onEdit,
 }) => {
@@ -18,7 +18,7 @@ const ReviewComponent = ({
   const subtotal = items?.reduce((sum, item) => sum + item.amount, 0);
   const total = subtotal + (terms?.additionalCharges || 0);
   const dispatch = useDispatch();
-  
+  console.log("it is", requestInfo);
   // Modal state
   const [modalState, setModalState] = useState(null); // 'confirmation', 'loading', 'success'
   const [isAwaiting, setIsAwaiting] = useState(false);

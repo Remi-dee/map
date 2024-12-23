@@ -5,9 +5,9 @@ import Profile from "@/app/assets/navbar/image.png";
 
 const Navbar = () => {
   return (
-    <nav className="w-full -ml-4 flex items-center justify-between px-6 py-[12px] bg-white border-b ">
+    <nav className="w-full -ml-4 flex items-center justify-end px-6 py-[12px] bg-white border-b ">
       {/* Back Button */}
-      <button className="w-full flex items-center text-gray-500 hover:text-gray-700">
+      {/* <button className="w-full flex items-center text-gray-500 hover:text-gray-700">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -23,10 +23,10 @@ const Navbar = () => {
           />
         </svg>
         <span className="ml-2">Back</span>
-      </button>
+      </button> */}
 
       {/* Icons and Profile */}
-      <div className="w-full flex items-center space-x-6">
+      <div className="w-full justify-end flex items-center space-x-6">
         {/* Search Bar */}
         <div className="flex items-center max-w-[450px] mr-[30px] flex-grow  border border-gray-100 rounded-[12px] px-[15px] py-[15px]">
           <svg
