@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import { LiaToggleOnSolid } from "react-icons/lia";
 import Dashboard from "@/app/assets/sidebar/dashboard.svg";
 import Procurement from "@/app/assets/sidebar/procurement.svg";
 import Calender from "@/app/assets/sidebar/calender.svg";
@@ -13,30 +12,16 @@ import Settings from "@/app/assets/sidebar/settings.svg";
 import Person from "@/app/assets/sidebar/person.svg";
 import ArrowSide from "@/app/assets/sidebar/arrowSide.svg";
 
-import {
-  HomeIcon,
-  CalendarIcon,
-  BellIcon,
-  UserIcon,
-  CogIcon,
-  ChatBubbleBottomCenterTextIcon,
-} from "@heroicons/react/outline"; // Use any icons
+import { HomeIcon, CalendarIcon, UserIcon } from "@heroicons/react/outline"; // Use any icons
 import { BiUserVoice } from "react-icons/bi";
-import DoubleArrow from "@/app/assets/doubleArrowRight.png";
 import Image from "next/image";
-import User from "@/app/assets/Profile.png";
-import Message from "@/app/assets/message.png";
 import { PiToggleRightFill } from "react-icons/pi";
 import { PiChatsCircle } from "react-icons/pi";
-import MobileNav from "./MobileNav";
 import Logo from "./Logo";
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // Add state for mobile sidebar
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Persist dark mode preference in local storage
   useEffect(() => {

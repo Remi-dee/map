@@ -118,7 +118,7 @@ const ReviewComponent = ({
         <h2 className="flex items-center gap-1 text-lg font-semibold mb-4">
           Item(s)
         </h2>
-        <table className="w-full mb-6 border border-[#D0D5DD] rounded-lg overflow-hidden">
+        <table className="w-full mb-6 border border-[#D0D5DD] rounded-lg ">
           <thead className="bg-[#F9FAFB] text-[#344054] font-normal text-xs border-b border-gray-300">
             <tr>
               <th className="py-2 px-4 text-left">

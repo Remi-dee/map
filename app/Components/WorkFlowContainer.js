@@ -53,7 +53,7 @@ const WorkflowContainer = () => {
       : "bg-gray-100 text-gray-500";
 
     const titleColor = isActive
-      ? "text-blue-600"
+      ? "text-gray-900"
       : isCompleted
       ? "text-gray-900"
       : "text-gray-500";

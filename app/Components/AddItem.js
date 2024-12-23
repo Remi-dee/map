@@ -37,7 +37,7 @@ const AddItemsSection = () => {
       {items.map((item) => (
         <div
           key={item.id}
-          className="grid grid-cols-12 gap-4 items-center mb-2"
+          className="w-full grid grid-cols-12 gap-4 items-center mb-2"
         >
           <select
             className="col-span-2 p-2 bg-[#F0F2F5] text-[#98A2B3] font-normal text-sm border-[#D0D5DD] border rounded-[6px]"
@@ -108,7 +108,7 @@ const AddItemsSection = () => {
           </div>
 
           <button
-            className="col-span-1 text-red-500"
+            className="w-fit flex items-center justify-end text-red-500"
             onClick={() => dispatch(deleteItem(item.id))}
           >
             <Image src={Bin} alt="Delete" className="w-5 h-auto  " />
@@ -124,7 +124,7 @@ const AddItemsSection = () => {
       </button>
 
       <div className="mt-6 border-t pt-4 ">
-        <div className="flex gap-4 font-normal text-[#475367] justify-end mr-[70px]">
+        <div className="flex gap-4 font-normal text-[#475367] justify-end mr-[50px]">
           <span>Sub Total</span>
           <span>${subtotal.toFixed(2)}</span>
         </div>
