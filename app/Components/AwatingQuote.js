@@ -5,11 +5,8 @@ const AwaitingQuote = ({ data }) => {
     title,
     rfqNo,
     requestor,
-    status,
     department,
-    client,
     expectedDeliveryDate,
-    createdDate,
   } = data;
 
   return (
@@ -17,7 +14,7 @@ const AwaitingQuote = ({ data }) => {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-xl font-semibold">Quote details</h1>
-        <span className="text-sm text-gray-500">Created on {createdDate}</span>
+        <span className="text-sm text-gray-500">Created on today</span>
       </div>
 
       {/* Quote Information */}
@@ -49,7 +46,7 @@ const AwaitingQuote = ({ data }) => {
           <div className="col-span-6">
             <p className="text-sm font-medium text-gray-600">Status</p>
             <span className="bg-yellow-100 text-yellow-600 text-sm px-2 py-1 rounded-md">
-              {status}
+              Awaiting
             </span>
           </div>
           <div className="col-span-6">

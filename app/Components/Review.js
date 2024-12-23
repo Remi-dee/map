@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Misc from "@/app/assets/review/misc.svg";
 import Sign from "@/app/assets/review/signDoc.svg";
+import Edit from "@/app/assets/review/edit.svg";
+import Close from "@/app/assets/review/close.svg";
+import Alert from "@/app/assets/review/alert.svg";
 import Image from "next/image";
+import AwaitingQuote from "./AwatingQuote";
 const ReviewComponent = ({
   quoteDetails: requestInfo,
   termsAndAttachmentData: terms,
@@ -14,85 +18,96 @@ const ReviewComponent = ({
 
   // Modal state
   const [modalState, setModalState] = useState(null); // 'confirmation', 'loading', 'success'
-
+  const [isAwaiting, setIsAwaiting] = useState(false);
   const handleSubmit = () => {
     setModalState("confirmation");
   };
 
   const handleConfirm = () => {
+    setIsAwaiting(true);
     setModalState("loading");
     setTimeout(() => {
       setModalState("success");
       setTimeout(() => {
         setModalState(null); // Close success modal after a short delay
-      }, 2000);
+      }, 3000);
     }, 3000); // Simulating loading for 3 seconds
   };
 
   return (
     <div className="">
       {/* Request Information Section */}
-
-      <div className="bg-white border  rounded-md px-[32px] py-[24px]">
-        <h2 className="text-lg font-semibold mb-4 ">Request Information</h2>
-        <div className="flex-col mb-6">
-          <div className="flex  gap-[240px]">
-            <div className="space-y-[16px] text-[#555E68] text-base font-[500]">
-              <div className="flex">
-                <p className=" ">Title</p>
-              </div>
-              <div className="flex ">
-                <p className="">RFQ No</p>
-              </div>
-              <div className="flex ">
-                <p className="">Requestor</p>
-              </div>
-              <div className="flex ">
-                <p className="">Department</p>
-              </div>
-              <div className="flex ">
-                <p className="">Expected Delivery Date</p>
-              </div>
-            </div>
-
-            <div className="space-y-[16px] text-base font-[500]">
-              {" "}
-              <div className="flex ">
-                <p>{requestInfo?.title}</p>
-              </div>
-              <div className="flex ">
-                <p>{requestInfo?.rfqNo}</p>
-              </div>
-              <div className="flex ">
-                <div className="flex items-center space-x-3">
-                  {/* Circle with initials */}
-                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-[#FFECE5]">
-                    <span className="text-sm font-semibold text-[#101928]">
-                      JD
-                    </span>
-                  </div>
-
-                  {/* Name and Role */}
-                  <div className="flex items-center space-x-1">
-                    <span className="font-medium text-[#101928]">Jane Doe</span>
-                    <span className="text-[#D9D9D9] text-[25px]">•</span>
-                    <span className="text-sm text-gray-500">
-                      Head Nurse, Paediatrics
-                    </span>
-                  </div>
+      {isAwaiting ? (
+        <AwaitingQuote data={requestInfo} />
+      ) : (
+        <div className="bg-white border  rounded-md px-[32px] py-[24px]">
+          <div className="flex justify-between">
+            {" "}
+            <h2 className="text-lg font-semibold mb-4 ">
+              Request Information
+            </h2>{" "}
+            <Image src={Edit} alt="Delete" className="w-[24px] h-auto" />
+          </div>{" "}
+          <div className="flex-col mb-6">
+            <div className="flex  gap-[240px]">
+              <div className="space-y-[16px] text-[#555E68] text-base font-[500]">
+                <div className="flex">
+                  <p className=" ">Title</p>
+                </div>
+                <div className="flex ">
+                  <p className="">RFQ No</p>
+                </div>
+                <div className="flex ">
+                  <p className="">Requestor</p>
+                </div>
+                <div className="flex ">
+                  <p className="">Department</p>
+                </div>
+                <div className="flex ">
+                  <p className="">Expected Delivery Date</p>
                 </div>
               </div>
-              <div className="flex ">
-                <p>{requestInfo?.department}</p>
-              </div>
-              <div className="flex ">
-                <p>{requestInfo?.expectedDeliveryDate}</p>
+
+              <div className="space-y-[16px] text-base font-[500]">
+                {" "}
+                <div className="flex ">
+                  <p>{requestInfo?.title}</p>
+                </div>
+                <div className="flex ">
+                  <p>{requestInfo?.rfqNo}</p>
+                </div>
+                <div className="flex ">
+                  <div className="flex items-center space-x-3">
+                    {/* Circle with initials */}
+                    <div className="flex items-center justify-center h-8 w-8 rounded-full bg-[#FFECE5]">
+                      <span className="text-sm font-semibold text-[#101928]">
+                        JD
+                      </span>
+                    </div>
+
+                    {/* Name and Role */}
+                    <div className="flex items-center space-x-1">
+                      <span className="font-medium text-[#101928]">
+                        Jane Doe
+                      </span>
+                      <span className="text-[#D9D9D9] text-[25px]">•</span>
+                      <span className="text-sm text-gray-500">
+                        Head Nurse, Paediatrics
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex ">
+                  <p>{requestInfo?.department}</p>
+                </div>
+                <div className="flex ">
+                  <p>{requestInfo?.expectedDeliveryDate}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
+      )}
       {/* Items Section */}
       <div className="bg-white border rounded-md px-[32px] my-[24px] py-[24px]">
         {" "}
@@ -164,11 +179,34 @@ const ReviewComponent = ({
       </div>
 
       {/* Terms and Attachments Section */}
-      <div className="bg-white items-start gap-[16px] border p-4 rounded mb-6 flex">
-        <Image src={Sign} alt="Delete" className="w-[24px] h-auto" />
-        <div>
-          <h3 className="text-md font-semibold mb-2">Terms and Attachments</h3>
-          <p className="text-sm">Review payment and delivery terms</p>
+      <div className="bg-white  border p-4 rounded mb-6 ">
+        <div className="w-full flex justify-between">
+          <div className="flex gap-[16px]  items-start">
+            <Image src={Sign} alt="Delete" className="w-[24px] h-auto" />
+            <div>
+              <h3 className="text-md font-semibold mb-2">
+                Terms and Attachments
+              </h3>
+              <p className="text-sm">Review payment and delivery terms</p>
+            </div>
+          </div>
+
+          <button className="flex items-center text-gray-500 hover:text-gray-700">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -227,10 +265,20 @@ const ReviewComponent = ({
       )}
 
       {modalState === "success" && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-between">
           <div className="bg-white p-6 rounded shadow-md flex items-center">
-            <span className="text-green-500 mr-4">✔</span>
+            <Image src={Alert} alt="Delete" className="w-[24px] h-auto" />
             <span>RFQ ID sent successfully!</span>
+          </div>
+          <div>
+            {" "}
+            <button
+              onClick={() => {
+                setIsAwaiting(true);
+              }}
+            >
+              <Image src={Close} alt="Exit" className="w-[24px] h-auto" />
+            </button>
           </div>
         </div>
       )}
