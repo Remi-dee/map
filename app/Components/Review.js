@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Misc from "@/app/assets/review/misc.svg";
 import Sign from "@/app/assets/review/signDoc.svg";
 import Edit from "@/app/assets/review/edit.svg";
@@ -8,6 +8,7 @@ import Alert from "@/app/assets/review/alert.svg";
 import Border from "@/app/assets/review/border.svg";
 import Image from "next/image";
 import AwaitingQuote from "./AwatingQuote";
+import { startAwaiting } from "../redux/feature/itemsSlice";
 const ReviewComponent = ({
   quoteDetails: requestInfo,
   termsAndAttachmentData: terms,
@@ -16,7 +17,8 @@ const ReviewComponent = ({
   const { items, note } = useSelector((state) => state.items);
   const subtotal = items?.reduce((sum, item) => sum + item.amount, 0);
   const total = subtotal + (terms?.additionalCharges || 0);
-
+  const dispatch = useDispatch();
+  
   // Modal state
   const [modalState, setModalState] = useState(null); // 'confirmation', 'loading', 'success'
   const [isAwaiting, setIsAwaiting] = useState(false);
@@ -25,6 +27,7 @@ const ReviewComponent = ({
   };
 
   const handleConfirm = () => {
+    dispatch(startAwaiting());
     setIsAwaiting(true);
     setModalState("loading");
     setTimeout(() => {

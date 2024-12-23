@@ -14,6 +14,7 @@ const initialState = {
     },
   ],
   note: "",
+  awaiting: false,
 };
 
 const itemsSlice = createSlice({
@@ -54,9 +55,16 @@ const itemsSlice = createSlice({
     updateNote: (state, action) => {
       state.note = action.payload;
     },
+    startAwaiting: (state) => {
+      state.awaiting = true;
+    },
+    stopAwaiting: (state) => {
+      state.awaiting = false;
+    },
   },
 });
 
-export const { addItem, deleteItem, updateItem, updateNote } =
+export const { addItem, deleteItem, updateItem, updateNote , startAwaiting,
+    stopAwaiting,} =
   itemsSlice.actions;
 export default itemsSlice.reducer;

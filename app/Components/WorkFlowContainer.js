@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import RequestForQuote from "./RequestForQuote";
 import TermsAndAttachments from "./TermsAndAttachment";
 import ReviewComponent from "./Review";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const WorkflowContainer = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -10,6 +12,7 @@ const WorkflowContainer = () => {
   const [items, setItems] = useState([]);
   const [terms, setTerms] = useState({});
 
+  const awaiting = useSelector((state) => state.items.awaiting);
   const steps = [
     {
       id: 1,
@@ -75,20 +78,36 @@ const WorkflowContainer = () => {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Flow Bar */}
-      <div className="bg-white border rounded-lg p-6 flex justify-between">
-        {steps.map((step, index) => (
-          <div
-            key={step.id}
-            className={`flex flex-1 justify-center ${
-              index !== steps.length - 1 ? "border-r border-gray-200" : ""
-            }`}
-          >
-            {renderStep(step)}
-          </div>
-        ))}
-      </div>
+      {!awaiting && (
+        <>
+          <nav className="flex mb-5 items-center space-x-2 text-sm text-gray-500">
+            {/* First breadcrumb item */}
+            <Link className="text-blue-500 hover:underline" href="/quotes">
+              Quotes
+            </Link>
 
+            {/* Separator */}
+            <span>/</span>
+
+            {/* Current breadcrumb item */}
+            <span className="text-gray-900">Quote Response</span>
+          </nav>
+
+          {/* Flow Bar */}
+          <div className="bg-white border rounded-lg p-6 flex justify-between">
+            {steps.map((step, index) => (
+              <div
+                key={step.id}
+                className={`flex flex-1 justify-center ${
+                  index !== steps.length - 1 ? "border-r border-gray-200" : ""
+                }`}
+              >
+                {renderStep(step)}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
       {/* Current Step Content */}
       <div>
         {currentStep === 1 && (
@@ -113,6 +132,7 @@ const WorkflowContainer = () => {
             terms={terms}
             onEdit={handleBack}
             onSubmit={handleSubmit}
+            awaiting={awaiting}
           />
         )}
       </div>
