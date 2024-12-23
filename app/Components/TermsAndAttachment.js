@@ -35,6 +35,7 @@ const TermsAndAttachments = ({ onBack, onContinue, quoteDetails }) => {
   const handleBack = () => {};
 
   if (currentScreen === "ReviewComponent") {
+    console.log("this is quote", quoteDetails, termsAndAttachmentData);
     return (
       <ReviewComponent
         onBack={handleBack}

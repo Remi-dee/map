@@ -1,39 +1,43 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ReviewComponent = ({
-  quoteDetails: { requestInfo },
-  items,
-  termsAndAttachmentData: { terms },
+  quoteDetails: requestInfo,
+  termsAndAttachmentData: terms,
   onEdit,
   onSubmit,
 }) => {
+  const { items, note } = useSelector((state) => state.items);
   const subtotal = items?.reduce((sum, item) => sum + item.amount, 0);
   const total = subtotal + (terms?.additionalCharges || 0);
 
   return (
     <div className="p-6 bg-white border rounded-md">
       {/* Request Information Section */}
+
       <h2 className="text-lg font-semibold mb-4">Request Information</h2>
-      <div className="grid grid-cols-12 gap-4 mb-6">
-        <div className="col-span-6">
+
+      <div className="flex-col space-y-5 mb-6">
+        <div className="flex gap-6">
           <p className="text-sm font-semibold">Title</p>
           <p>{requestInfo?.title}</p>
         </div>
-        <div className="col-span-6">
+        <div className="flex gap-6">
           <p className="text-sm font-semibold">RFQ No</p>
           <p>{requestInfo?.rfqNo}</p>
         </div>
-        <div className="col-span-6">
+        <div className="flex gap-6">
           <p className="text-sm font-semibold">Requestor</p>
           <p>
-            {requestInfo?.requestor.name} - {requestInfo?.requestor.position}
+            {/* {requestInfo?.requestor.name} - {requestInfo?.requestor.position} */}
+            Jane-Doe
           </p>
         </div>
-        <div className="col-span-6">
+        <div className="flex gap-6">
           <p className="text-sm font-semibold">Department</p>
           <p>{requestInfo?.department}</p>
         </div>
-        <div className="col-span-6">
+        <div className="flex gap-6">
           <p className="text-sm font-semibold">Expected Delivery Date</p>
           <p>{requestInfo?.expectedDeliveryDate}</p>
         </div>

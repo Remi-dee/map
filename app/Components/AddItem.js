@@ -1,51 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addItem,
+  deleteItem,
+  updateItem,
+  updateNote,
+} from "../redux/feature/itemsSlice";
 
 const AddItemsSection = () => {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      item: "Oxygen Concentrator",
-      variant: "Blue",
-      quantity: 100,
-      price: 12,
-      deliveryDate: "2023-12-02",
-      amount: 1200,
-    },
-  ]);
-  const [note, setNote] = useState("");
-
-  const handleAddItem = () => {
-    const newItem = {
-      id: Date.now(),
-      item: "",
-      variant: "",
-      quantity: 1,
-      price: 0,
-      deliveryDate: "",
-      amount: 0,
-    };
-    setItems([...items, newItem]);
-  };
-
-  const handleDeleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
-  };
+  const dispatch = useDispatch();
+  const { items, note } = useSelector((state) => state.items);
 
   const handleItemChange = (id, field, value) => {
-    const updatedItems = items.map((item) =>
-      item.id === id
-        ? {
-            ...item,
-            [field]: value,
-            amount:
-              field === "quantity" || field === "price"
-                ? (field === "quantity" ? value : item.quantity) *
-                  (field === "price" ? value : item.price)
-                : item.amount,
-          }
-        : item
-    );
-    setItems(updatedItems);
+    console.log("our items is", items);
+    dispatch(updateItem({ id, field, value }));
   };
 
   const subtotal = items.reduce((sum, item) => sum + item.amount, 0);
@@ -139,7 +107,7 @@ const AddItemsSection = () => {
 
           <button
             className="col-span-1 text-red-500"
-            onClick={() => handleDeleteItem(item.id)}
+            onClick={() => dispatch(deleteItem(item.id))}
           >
             🗑️
           </button>
@@ -148,7 +116,7 @@ const AddItemsSection = () => {
 
       <button
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={handleAddItem}
+        onClick={() => dispatch(addItem())}
       >
         Add Item
       </button>
@@ -166,7 +134,7 @@ const AddItemsSection = () => {
           className="w-full p-2 border rounded"
           rows="4"
           value={note}
-          onChange={(e) => setNote(e.target.value)}
+          onChange={(e) => dispatch(updateNote(e.target.value))}
         ></textarea>
         <div className="text-right text-sm text-gray-500 mt-1">
           {note.length}/200

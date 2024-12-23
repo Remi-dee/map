@@ -25,6 +25,7 @@ const RequestForQuote = () => {
   };
 
   if (currentScreen === "TermsAndAttachments") {
+    console.log("this isnquote",quoteDetails)
     return (
       <TermsAndAttachments onBack={handleBack} quoteDetails={quoteDetails} />
     );
