@@ -62,7 +62,23 @@ const ReviewComponent = ({
                 <p>{requestInfo?.rfqNo}</p>
               </div>
               <div className="flex ">
-                <p>Jane-Doe</p>
+                <div className="flex items-center space-x-3">
+                  {/* Circle with initials */}
+                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-red-100">
+                    <span className="text-sm font-semibold text-red-600">
+                      JD
+                    </span>
+                  </div>
+
+                  {/* Name and Role */}
+                  <div className="flex items-center space-x-1">
+                    <span className="font-medium text-gray-900">Jane Doe</span>
+                    <span className="text-gray-400">•</span>
+                    <span className="text-sm text-gray-500">
+                      Head Nurse, Paediatrics
+                    </span>
+                  </div>
+                </div>
               </div>
               <div className="flex ">
                 <p>{requestInfo?.department}</p>
