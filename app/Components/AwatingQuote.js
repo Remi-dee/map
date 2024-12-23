@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Building from "@/app/assets/review/building.svg";
 import Image from "next/image";
-import { FaTimes } from "react-icons/fa";
 const AwaitingQuote = ({ requestInfo }) => {
   //   const { title, rfqNo, requestor, department, expectedDeliveryDate } = data;
   console.log("our details is", requestInfo);

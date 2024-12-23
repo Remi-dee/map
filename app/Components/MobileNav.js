@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "@/app/assets/Logo.png";
 import { GiCancel } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import {

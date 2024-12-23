@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setQuoteDetails,
   saveDraft,
   submitQuote,
 } from "../redux/feature/quoteSlice";

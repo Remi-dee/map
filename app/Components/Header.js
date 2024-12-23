@@ -1,10 +1,4 @@
 import React from "react";
-import ArrowUp from "../assets/arrow_up.png";
-import ArrowDown from "../assets/arrow_down.png";
-import Information from "../assets/information.png";
-import Image from "next/image";
-
-import { RiErrorWarningLine } from "react-icons/ri";
 import Navbar from "./Navbar";
 const Header = () => {
   return (

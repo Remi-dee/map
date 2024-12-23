@@ -2,8 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import Profile from "@/app/assets/navbar/image.png";
-import Chat from "@/app/assets/navbar/chatIcon.png";
-import Bell from "@/app/assets/navbar/bell.png";
 
 const Navbar = () => {
   return (

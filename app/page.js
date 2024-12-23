@@ -1,13 +1,7 @@
 "use client";
-import Image from "next/image";
-import Header from "./Components/Header";
-import Carousel from "./Components/carousel/Carousel";
-import BarChart from "./Components/BarChart";
-import EventHistory from "./Components/EventHistory";
+
 import Sidebar from "./Components/SideBar";
 import { useState, useEffect } from "react";
-import QuoteFlow from "./Components/QuoteFlow";
-import RequestForQuote from "./Components/RequestForQuote";
 import WorkflowContainer from "./Components/WorkFlowContainer";
 import Navbar from "./Components/Navbar";
 
