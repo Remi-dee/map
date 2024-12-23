@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const ReviewComponent = ({
   quoteDetails: requestInfo,
   termsAndAttachmentData: terms,
   onEdit,
-  onSubmit,
 }) => {
   const { items, note } = useSelector((state) => state.items);
   const subtotal = items?.reduce((sum, item) => sum + item.amount, 0);
   const total = subtotal + (terms?.additionalCharges || 0);
 
+  // Modal state
+  const [modalState, setModalState] = useState(null); // 'confirmation', 'loading', 'success'
+
+  const handleSubmit = () => {
+    setModalState("confirmation");
+  };
+
+  const handleConfirm = () => {
+    setModalState("loading");
+    setTimeout(() => {
+      setModalState("success");
+      setTimeout(() => {
+        setModalState(null); // Close success modal after a short delay
+      }, 2000);
+    }, 3000); // Simulating loading for 3 seconds
+  };
+
   return (
     <div className="p-6 bg-white border rounded-md">
       {/* Request Information Section */}
-
       <h2 className="text-lg font-semibold mb-4">Request Information</h2>
-
       <div className="flex-col space-y-5 mb-6">
         <div className="flex gap-6">
           <p className="text-sm font-semibold">Title</p>
@@ -28,10 +42,7 @@ const ReviewComponent = ({
         </div>
         <div className="flex gap-6">
           <p className="text-sm font-semibold">Requestor</p>
-          <p>
-            {/* {requestInfo?.requestor.name} - {requestInfo?.requestor.position} */}
-            Jane-Doe
-          </p>
+          <p>Jane-Doe</p>
         </div>
         <div className="flex gap-6">
           <p className="text-sm font-semibold">Department</p>
@@ -98,11 +109,57 @@ const ReviewComponent = ({
         </button>
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded"
-          onClick={onSubmit}
+          onClick={handleSubmit}
         >
           Submit
         </button>
       </div>
+
+      {/* Modals */}
+      {modalState === "confirmation" && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded shadow-md w-96">
+            <h2 className="text-lg font-semibold mb-4">Confirmation</h2>
+            <p className="text-sm mb-6">
+              You are about to submit this quote in response to RFQ ID. This
+              will immediately be sent to the client “Westend Clear Hospital.”
+              Are you sure you want to proceed?
+            </p>
+            <div className="flex justify-end space-x-4">
+              <button
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
+                onClick={() => setModalState(null)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded"
+                onClick={handleConfirm}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {modalState === "loading" && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded shadow-md flex items-center">
+            <div className="animate-spin h-6 w-6 border-4 border-blue-500 border-t-transparent rounded-full mr-4"></div>
+            <span>Sending Quote...</span>
+          </div>
+        </div>
+      )}
+
+      {modalState === "success" && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded shadow-md flex items-center">
+            <span className="text-green-500 mr-4">✔</span>
+            <span>RFQ ID sent successfully!</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
