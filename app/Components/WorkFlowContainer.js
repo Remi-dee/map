@@ -47,9 +47,9 @@ const WorkflowContainer = () => {
 
     // Update dynamic styles based on currentStep
     const circleBgColor = isActive
-      ? "bg-blue-600 text-white"
+      ? "bg-[#175CFF] text-white"
       : isCompleted
-      ? "bg-green-500 text-white"
+      ? "bg-[#E7F6EC] text-[#0F973D]"
       : "bg-gray-100 text-gray-500";
 
     const titleColor = isActive
@@ -64,7 +64,7 @@ const WorkflowContainer = () => {
     return (
       <div key={step.id} className="flex items-center space-x-4">
         <div
-          className={`w-8 h-8 flex items-center justify-center rounded-full ${circleBgColor}`}
+          className={`w-8 h-8 flex font-bold text-lg items-center justify-center rounded-full ${circleBgColor}`}
         >
           {step.id}
         </div>

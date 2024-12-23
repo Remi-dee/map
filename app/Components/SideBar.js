@@ -51,25 +51,6 @@ const Sidebar = () => {
     setSidebarOpen((prev) => !prev);
   };
 
-  const mobileTabs = [
-    { name: "Home", icon: <HomeIcon className="h-6 w-6" />, id: "home" },
-    {
-      name: "Events",
-      icon: <CalendarIcon className="h-6 w-6" />,
-      id: "events",
-    },
-    {
-      name: "Speakers",
-      icon: <BiUserVoice className="h-6 w-6" />,
-      id: "speakers",
-    },
-    {
-      name: "Messages",
-      icon: <PiChatsCircle className="h-6 w-6" />,
-      id: "messages",
-    },
-    { name: "Profile", icon: <UserIcon className="h-6 w-6" />, id: "profile" },
-  ];
   return (
     <>
       {/* Hamburger Icon for mobile */}
