@@ -57,5 +57,6 @@ const itemsSlice = createSlice({
   },
 });
 
-export const { addItem, deleteItem, updateItem, updateNote } = itemsSlice.actions;
+export const { addItem, deleteItem, updateItem, updateNote } =
+  itemsSlice.actions;
 export default itemsSlice.reducer;

@@ -5,7 +5,6 @@ import { LiaToggleOnSolid } from "react-icons/lia";
 import Dashboard from "@/app/assets/sidebar/dashboard.svg";
 import Procurement from "@/app/assets/sidebar/procurement.svg";
 import Calender from "@/app/assets/sidebar/calender.svg";
-import Communication from "@/app/assets/sidebar/communication.svg";
 import Finance from "@/app/assets/sidebar/finance.svg";
 import Inventory from "@/app/assets/sidebar/inventory.svg";
 import Contract from "@/app/assets/sidebar/contract.svg";
@@ -13,9 +12,6 @@ import Support from "@/app/assets/sidebar/support.svg";
 import Settings from "@/app/assets/sidebar/settings.svg";
 import Person from "@/app/assets/sidebar/person.svg";
 
-import LogoMobile from "@/app/assets/logoMobile.png";
-import { GiCancel } from "react-icons/gi";
-import { PiToggleLeftDuotone } from "react-icons/pi";
 import {
   HomeIcon,
   CalendarIcon,

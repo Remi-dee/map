@@ -25,14 +25,14 @@ const RequestForQuote = () => {
   };
 
   if (currentScreen === "TermsAndAttachments") {
-    console.log("this isnquote",quoteDetails)
+    console.log("this isnquote", quoteDetails);
     return (
       <TermsAndAttachments onBack={handleBack} quoteDetails={quoteDetails} />
     );
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 border rounded-md">
       <h1 className="text-2xl font-bold mb-2">Request for Quote</h1>
       <h5 className="text-xs mb-[32px] font-normal text-[#98A2B3]">
         Fill out these details to send the RFQ
@@ -92,14 +92,14 @@ const RequestForQuote = () => {
       </div>
       <AddItemsSection />
       <div className="flex justify-end mt-6">
-        <button className="bg-gray-300 text-black px-4 py-2 rounded-md mr-2">
+        <button className="border-[#E4E7EC] text-[#475367] border  px-4 py-[10px] rounded-[8px] mr-2">
           Cancel
         </button>
-        <button className="bg-gray-500 text-white px-4 py-2 rounded-md mr-2">
+        <button className=" text-[#175CFF] border-[#175CFF] border px-[52px] py-[10px] rounded-[8px] mr-2">
           Save as Draft
         </button>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-[#175CFF] text-white px-[52px] py-[10px] rounded-[8px]"
           onClick={handleContinue}
         >
           Continue

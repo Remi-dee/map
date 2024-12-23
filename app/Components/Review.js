@@ -28,29 +28,50 @@ const ReviewComponent = ({
   };
 
   return (
-    <div className="p-6 bg-white border rounded-md">
+    <div className="p-6 ">
       {/* Request Information Section */}
-      <h2 className="text-lg font-semibold mb-4">Request Information</h2>
-      <div className="flex-col space-y-5 mb-6">
-        <div className="flex gap-6">
-          <p className="text-sm font-semibold">Title</p>
-          <p>{requestInfo?.title}</p>
-        </div>
-        <div className="flex gap-6">
-          <p className="text-sm font-semibold">RFQ No</p>
-          <p>{requestInfo?.rfqNo}</p>
-        </div>
-        <div className="flex gap-6">
-          <p className="text-sm font-semibold">Requestor</p>
-          <p>Jane-Doe</p>
-        </div>
-        <div className="flex gap-6">
-          <p className="text-sm font-semibold">Department</p>
-          <p>{requestInfo?.department}</p>
-        </div>
-        <div className="flex gap-6">
-          <p className="text-sm font-semibold">Expected Delivery Date</p>
-          <p>{requestInfo?.expectedDeliveryDate}</p>
+
+      <div className="bg-white border rounded-md px-[32px] py-[24px]">
+        <h2 className="text-lg font-semibold mb-4 ">Request Information</h2>
+        <div className="flex-col mb-6">
+          <div className="flex  gap-[240px]">
+            <div className="space-y-[16px] text-[#555E68] text-base font-[500]">
+              <div className="flex">
+                <p className=" ">Title</p>
+              </div>
+              <div className="flex ">
+                <p className="">RFQ No</p>
+              </div>
+              <div className="flex ">
+                <p className="">Requestor</p>
+              </div>
+              <div className="flex ">
+                <p className="">Department</p>
+              </div>
+              <div className="flex ">
+                <p className="">Expected Delivery Date</p>
+              </div>
+            </div>
+
+            <div className="space-y-[16px] text-base font-[500]">
+              {" "}
+              <div className="flex ">
+                <p>{requestInfo?.title}</p>
+              </div>
+              <div className="flex ">
+                <p>{requestInfo?.rfqNo}</p>
+              </div>
+              <div className="flex ">
+                <p>Jane-Doe</p>
+              </div>
+              <div className="flex ">
+                <p>{requestInfo?.department}</p>
+              </div>
+              <div className="flex ">
+                <p>{requestInfo?.expectedDeliveryDate}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
