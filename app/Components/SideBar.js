@@ -240,7 +240,7 @@ const Sidebar = () => {
                   )}
                 </li>
               </ul>
-              <ul className="mt-4 ">
+              <ul className="mt-[90px] ">
                 <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Support}
