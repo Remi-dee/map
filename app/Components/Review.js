@@ -38,7 +38,7 @@ const ReviewComponent = ({
     <div className="">
       {/* Request Information Section */}
       {isAwaiting ? (
-        <AwaitingQuote data={requestInfo} />
+        <AwaitingQuote requestInfo={requestInfo} />
       ) : (
         <div className="bg-white border  rounded-md px-[32px] py-[24px]">
           <div className="flex justify-between">
