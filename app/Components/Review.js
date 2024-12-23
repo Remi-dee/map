@@ -5,6 +5,7 @@ import Sign from "@/app/assets/review/signDoc.svg";
 import Edit from "@/app/assets/review/edit.svg";
 import Close from "@/app/assets/review/close.svg";
 import Alert from "@/app/assets/review/alert.svg";
+import Border from "@/app/assets/review/border.svg";
 import Image from "next/image";
 import AwaitingQuote from "./AwatingQuote";
 const ReviewComponent = ({
@@ -229,23 +230,24 @@ const ReviewComponent = ({
 
       {/* Modals */}
       {modalState === "confirmation" && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-md w-96">
+        <div className=" fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6  rounded shadow-md ">
             <h2 className="text-lg font-semibold mb-4">Confirmation</h2>
-            <p className="text-sm mb-6">
+            <p className="text-sm text-[#475367] mb-6 w-[568px]">
               You are about to submit this quote in response to RFQ ID. This
               will immediately be sent to the client “Westend Clear Hospital.”
               Are you sure you want to proceed?
             </p>
             <div className="flex justify-end space-x-4">
               <button
-                className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
                 onClick={() => setModalState(null)}
+                className="border-[#E4E7EC] text-[#475367] border  px-4 py-[10px] rounded-[8px] mr-2"
               >
                 Cancel
               </button>
+
               <button
-                className="px-4 py-2 bg-blue-500 text-white rounded"
+                className="px-4 py-2 bg-[#175CFF] text-white rounded"
                 onClick={handleConfirm}
               >
                 Continue
@@ -257,7 +259,7 @@ const ReviewComponent = ({
 
       {modalState === "loading" && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-md flex items-center">
+          <div className="bg-white p-[65px] rounded-[16px] shadow-md flex items-center">
             <div className="animate-spin h-6 w-6 border-4 border-blue-500 border-t-transparent rounded-full mr-4"></div>
             <span>Sending Quote...</span>
           </div>
@@ -265,20 +267,28 @@ const ReviewComponent = ({
       )}
 
       {modalState === "success" && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-between">
-          <div className="bg-white p-6 rounded shadow-md flex items-center">
-            <Image src={Alert} alt="Delete" className="w-[24px] h-auto" />
-            <span>RFQ ID sent successfully!</span>
-          </div>
-          <div>
-            {" "}
-            <button
-              onClick={() => {
-                setIsAwaiting(true);
-              }}
-            >
-              <Image src={Close} alt="Exit" className="w-[24px] h-auto" />
-            </button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center ">
+          <div className="relative bg-white w-[390px] justify-between p-6 rounded shadow-md flex items-center">
+            <Image
+              src={Border}
+              alt="Exit"
+              className="absolute left-0 w-[9px] h-auto"
+            />
+            <div className="flex gap-2">
+              {" "}
+              <Image src={Alert} alt="Delete" className="w-[24px] h-auto" />
+              <span>RFQ ID sent successfully!</span>
+            </div>
+            <div>
+              {" "}
+              <button
+                onClick={() => {
+                  setIsAwaiting(true);
+                }}
+              >
+                <Image src={Close} alt="Exit" className="w-[24px] h-auto" />
+              </button>
+            </div>{" "}
           </div>
         </div>
       )}

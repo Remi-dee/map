@@ -7,7 +7,7 @@ import Bell from "@/app/assets/navbar/bell.png";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex items-center justify-between px-6 py-[12px] bg-white shadow-md">
+    <nav className="w-full -ml-4 flex items-center justify-between px-6 py-[12px] bg-white border-b ">
       {/* Back Button */}
       <button className="w-full flex items-center text-gray-500 hover:text-gray-700">
         <svg

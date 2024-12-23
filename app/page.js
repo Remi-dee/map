@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import QuoteFlow from "./Components/QuoteFlow";
 import RequestForQuote from "./Components/RequestForQuote";
 import WorkflowContainer from "./Components/WorkFlowContainer";
+import Navbar from "./Components/Navbar";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -22,11 +23,11 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className="min-h-screen lg:flex pt-0 px-[20px] lg:p-0 w-full p-2 font-inter gap-[28px] dark:bg-[#383544] dark:border-gray-700">
+    <div className="min-h-screen flex pt-0 px-[20px] lg:p-0 w-full font-inter gap-[28px] dark:bg-[#383544] dark:border-gray-700">
       <Sidebar />
 
       <main className="">
-        <Header />
+        <Navbar />
         <WorkflowContainer />
       </main>
     </div>

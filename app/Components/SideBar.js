@@ -11,6 +11,7 @@ import Contract from "@/app/assets/sidebar/contract.svg";
 import Support from "@/app/assets/sidebar/support.svg";
 import Settings from "@/app/assets/sidebar/settings.svg";
 import Person from "@/app/assets/sidebar/person.svg";
+import ArrowSide from "@/app/assets/sidebar/arrowSide.svg";
 
 import {
   HomeIcon,
@@ -109,7 +110,7 @@ const Sidebar = () => {
       </div>
       <div
         className={`hidden lg:flex  ${
-          isCollapsed ? "w-16 " : "p-[20px]"
+          isCollapsed ? "w-16 " : "w-[370px]"
         } h-[100] transition-width dark:bg-[#484554] dark:border-gray-700 duration-300  bg-[#F7F9FC] border-r border-[#F1F5F9]`}
       >
         {/* Sidebar content */}
@@ -120,7 +121,7 @@ const Sidebar = () => {
               {" "}
               <ul className="mt-4 ">
                 {" "}
-                <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4  hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   <Image
                     src={Dashboard}
                     alt="Dashboard"
@@ -132,7 +133,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4  hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   <Image
                     src={Inventory}
                     alt="Dashboard"
@@ -144,7 +145,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
                   <Image
                     src={Procurement}
                     alt="Procurement"
@@ -156,21 +157,21 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   {!isCollapsed && (
                     <span className="ml-[38px] text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
                       Quotes
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   {!isCollapsed && (
                     <span className="ml-[38px] text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
                       Orders
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image src={Finance} alt="Finance" className="w-5 h-auto  " />
                   {!isCollapsed && (
                     <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
@@ -178,7 +179,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <button className="text-gray-500 hover:text-gray-700">
                     <svg
                       width="23"
@@ -214,7 +215,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Calender}
                     alt="Dashboard"
@@ -226,7 +227,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Contract}
                     alt="Dashboard"
@@ -240,7 +241,7 @@ const Sidebar = () => {
                 </li>
               </ul>
               <ul className="mt-4 ">
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Support}
                     alt="Dashboard"
@@ -252,7 +253,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Settings}
                     alt="Dashboard"
@@ -265,7 +266,7 @@ const Sidebar = () => {
                   )}
                 </li>
                 <button
-                  className="p-4 flex items-center hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] w-full"
+                  className="p-4 flex items-center hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] w-full"
                   onClick={() => setIsCollapsed(!isCollapsed)}
                 >
                   {/* Collapse/Expand icon */}
@@ -289,7 +290,7 @@ const Sidebar = () => {
                   </span>
                 </button>
                 <div className=" w-full">
-                  <label className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
+                  <label className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
                     <button onClick={toggleDarkMode} className=" ">
                       {isDarkMode ? (
                         <PiToggleRightFill className="text-[#8576FF]  h-6 w-6 " />
@@ -307,7 +308,7 @@ const Sidebar = () => {
                     </span>
                   </label>
                 </div>
-                <div className="p-4 dark:text-[#FFFFFF] hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
+                <div className="p-4 dark:text-[#FFFFFF] hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   <div className="flex items-center space-x-2">
                     <Image
                       src={Person}
@@ -317,14 +318,22 @@ const Sidebar = () => {
                       }   rounded-full`}
                     />
                     {!isCollapsed && (
-                      <div>
-                        <span className="text-[12px] text-[#101928] font-bold leading-[16px] text-left">
-                          Mark Benson
-                        </span>
-                        <br />
-                        <span className="text-xs text-[12px] font-normal leading-[16px] text-left">
-                          markbenson@core.com
-                        </span>
+                      <div className="flex gap-[55px] items-center">
+                        <div>
+                          {" "}
+                          <span className="text-[12px] text-[#101928] font-bold leading-[16px] text-left">
+                            Mark Benson
+                          </span>
+                          <br />
+                          <span className="text-xs text-[12px] font-normal leading-[16px] text-left">
+                            markbenson@core.com
+                          </span>{" "}
+                        </div>
+                        <Image
+                          src={ArrowSide}
+                          alt="Share"
+                          className="w-5 h-6"
+                        />
                       </div>
                     )}
                   </div>
@@ -333,178 +342,6 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/*sidebar on mobile*/}
-      <div
-        className={`fixed inset-0 z-40  bg-white lg:bg-transparent lg:relative lg:inset-auto lg:w-auto transition-all duration-300 ${
-          sidebarOpen ? "translate-x-0 w-full" : "-translate-x-full"
-        } lg:translate-x-0`}
-      >
-        <div
-          className={`lg:hidden dark:bg-[#484554] dark:border-gray-700 fixed top-0 left-0 h-full w-full bg-white p-[16px] transition-transform ${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <div className="flex justify-between items-center">
-            {" "}
-            <Image src={Logo} alt="Logo" className="w-[64px] h-8" />
-            {/* Close Button on Mobile */}
-            <button
-              className="w-[28px] font-medium  border dark:bg-white text-[#334155] rounded-full border-[#E2E8F0]"
-              onClick={() => setSidebarOpen(false)}
-            >
-              {/* <GiCancel className="h-6 w-6 border rounded-full border-[#E2E8F0]" /> */}
-              <span>x</span>
-            </button>
-          </div>
-
-          {/* Sidebar content */}
-          <ul className="mt-4 ">
-            {" "}
-            <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-              <HomeIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                  Home
-                </span>
-              )}
-            </li>
-            <li className="flex items-center p-4  hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-              <CalendarIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                  Events
-                </span>
-              )}
-            </li>
-            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
-              <BiUserVoice className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                  Speakers
-                </span>
-              )}
-            </li>
-            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-              <BellIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
-                  Notifications
-                </span>
-              )}
-            </li>
-            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
-              <PiChatsCircle className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
-                  Messages
-                </span>
-              )}
-            </li>
-            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
-              <UserIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                  Profile
-                </span>
-              )}
-            </li>
-            <li className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
-              <CogIcon className="h-6 w-6 text-gray-500 dark:text-[#FFFFFF]" />
-              {!isCollapsed && (
-                <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                  Settings
-                </span>
-              )}
-            </li>
-            <button
-              className="p-4 flex items-center hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] w-full"
-              onClick={() => setIsCollapsed(!isCollapsed)}
-            >
-              {/* Collapse/Expand icon */}
-              <span
-                className={`${
-                  isCollapsed ? "rotate-180" : ""
-                }flex items-center  transition-transform`}
-              >
-                <MdKeyboardDoubleArrowLeft
-                  className={` ${
-                    isCollapsed && " rotate-180"
-                  } h-6 w-6 text-gray-500 dark:text-[#FFFFFF]`}
-                />
-                <span
-                  className={`${
-                    isCollapsed && "hidden rotate-180"
-                  } ml-4 text-[14px] font-normal leading-[20px] text-left`}
-                >
-                  Collapse
-                </span>
-              </span>
-            </button>
-            <div className=" w-full">
-              <label className="flex items-center p-4 hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
-                <button onClick={toggleDarkMode} className=" ">
-                  {isDarkMode ? (
-                    <PiToggleRightFill className="text-[#8576FF]  h-6 w-6 " />
-                  ) : (
-                    <PiToggleRightFill className="text-[#E2E8F0] rotate-180 h-6 w-6" />
-                  )}
-                </button>
-
-                <span
-                  className={`${
-                    isCollapsed && "hidden rotate-180"
-                  } ml-4 text-[14px] font-normal leading-[20px] text-left`}
-                >
-                  Dark mode
-                </span>
-              </label>
-            </div>
-            <div className="p-4 dark:text-[#FFFFFF] hover:bg-[#FCF7FF] dark:hover:bg-[#8576FF]">
-              <div className="flex items-center space-x-2">
-                <Image
-                  src={Person}
-                  alt="User picture"
-                  className={`${
-                    isCollapsed ? "w-6 h-6" : "w-8 h-8"
-                  }   rounded-full`}
-                />
-                {!isCollapsed && (
-                  <div>
-                    <span className="text-[12px] font-normal leading-[16px] text-left">
-                      Mark Benson
-                    </span>
-                    <br />
-                    <span className="text-xs text-[12px] font-normal leading-[16px] text-left">
-                      markbenson@core.com
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </ul>
-        </div>
-      </div>
-      <div
-        className={`fixed z-50 bottom-0 left-0 w-full border-t border-[#F3F4F6] dark:bg-[#383544] p-4 bg-white sm:hidden ${
-          sidebarOpen ? "hidden" : "flex"
-        } justify-around`}
-      >
-        {mobileTabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabClick(tab.id)}
-            className={`flex flex-col items-center space-y-1 ${
-              activeTab === tab.id
-                ? "text-[#8576FF]  border-[#8576FF] border-t-2 "
-                : "text-gray-500 dark:text-gray-300"
-            }`}
-          >
-            {tab.icon}
-            <span className="text-xs font-medium">{tab.name}</span>
-          </button>
-        ))}
       </div>
     </>
   );
