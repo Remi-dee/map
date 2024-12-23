@@ -8,6 +8,7 @@ import Sidebar from "./Components/SideBar";
 import { useState, useEffect } from "react";
 import QuoteFlow from "./Components/QuoteFlow";
 import RequestForQuote from "./Components/RequestForQuote";
+import WorkflowContainer from "./Components/WorkFlowContainer";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -26,7 +27,7 @@ export default function Home() {
 
       <main className="">
         <Header />
-        <RequestForQuote />
+        <WorkflowContainer />
       </main>
     </div>
   );

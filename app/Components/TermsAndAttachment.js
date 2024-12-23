@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import ReviewComponent from "./Review";
 
-const TermsAndAttachments = () => {
+const TermsAndAttachments = ({ onBack, onContinue, quoteDetails }) => {
   const [paymentTerms, setPaymentTerms] = useState("Net 30");
+  const [termsAndAttachmentData, setTermsAndAttachmentData] = useState({});
   const [deliverySchedule, setDeliverySchedule] =
     useState("Immediate delivery");
   const [shippingMethod, setShippingMethod] = useState("Courier Services");
   const [leadTime, setLeadTime] = useState(10);
   const [files, setFiles] = useState([]);
-
+  const [currentScreen, setCurrentScreen] = useState("TermsAndAttachments");
   const handleFileUpload = (e) => {
     const uploadedFiles = Array.from(e.target.files);
     setFiles([...files, ...uploadedFiles]);
@@ -16,6 +18,31 @@ const TermsAndAttachments = () => {
   const handleFileRemove = (index) => {
     setFiles(files.filter((_, i) => i !== index));
   };
+
+  const handleContinue = () => {
+    const termsAndAttachmentData = {
+      paymentTerms,
+      deliverySchedule,
+      shippingMethod,
+      leadTime,
+      files,
+    };
+    setTermsAndAttachmentData(termsAndAttachmentData);
+    // onContinue(termsAndAttachmentData);
+    setCurrentScreen("ReviewComponent");
+  };
+
+  const handleBack = () => {};
+
+  if (currentScreen === "ReviewComponent") {
+    return (
+      <ReviewComponent
+        onBack={handleBack}
+        termsAndAttachmentData={termsAndAttachmentData}
+        quoteDetails={quoteDetails}
+      />
+    );
+  }
 
   return (
     <div className="p-6 bg-white border rounded-md">
@@ -64,7 +91,7 @@ const TermsAndAttachments = () => {
         </div>
 
         <div className="col-span-6">
-          <label className="block font-semibold mb-2">Lead time</label>
+          <label className="block font-semibold mb-2">Lead Time</label>
           <div className="flex items-center">
             <input
               type="number"
@@ -117,16 +144,24 @@ const TermsAndAttachments = () => {
         )}
       </div>
 
-      <div className="mt-6 flex justify-end space-x-4">
-        <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded">
-          Cancel
+      <div className="mt-6 flex justify-between space-x-4">
+        <button
+          className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
+          onClick={onBack}
+        >
+          Back
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded">
-          Save as draft
-        </button>
-        <button className="px-4 py-2 bg-blue-700 text-white rounded">
-          Continue
-        </button>
+        <div className="space-x-4">
+          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+            Save as Draft
+          </button>
+          <button
+            className="px-4 py-2 bg-blue-700 text-white rounded"
+            onClick={handleContinue}
+          >
+            Continue
+          </button>
+        </div>
       </div>
     </div>
   );

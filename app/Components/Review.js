@@ -1,6 +1,12 @@
 import React from "react";
 
-const ReviewComponent = ({ requestInfo, items, terms, onEdit, onSubmit }) => {
+const ReviewComponent = ({
+  quoteDetails: { requestInfo },
+  items,
+  termsAndAttachmentData: { terms },
+  onEdit,
+  onSubmit,
+}) => {
   const subtotal = items?.reduce((sum, item) => sum + item.amount, 0);
   const total = subtotal + (terms?.additionalCharges || 0);
 
