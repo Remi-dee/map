@@ -59,7 +59,7 @@ const ReviewComponent = ({
         <tbody>
           {items?.map((item, index) => (
             <tr key={index} className="border-t">
-              <td className="py-2 px-4">{item.name}</td>
+              <td className="py-2 px-4">{item.item}</td>
               <td className="py-2 px-4">{item.variant}</td>
               <td className="py-2 px-4">{item.quantity}</td>
               <td className="py-2 px-4">${item.price.toFixed(2)}</td>
