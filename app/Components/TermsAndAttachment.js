@@ -21,17 +21,28 @@ const TermsAndAttachments = ({ onBack, onContinue, quoteDetails }) => {
     setFiles(files.filter((_, i) => i !== index));
   };
 
+  const [termsData, setTermsData] = useState({
+    paymentTerms: "Net 30",
+    deliverySchedule: "Immediate delivery",
+    shippingMethod: "Courier Services",
+    leadTime: 10,
+  });
+
+  //   const handleContinue = () => {
+  //     const termsAndAttachmentData = {
+  //       paymentTerms,
+  //       deliverySchedule,
+  //       shippingMethod,
+  //       leadTime,
+  //       files,
+  //     };
+  //     setTermsAndAttachmentData(termsAndAttachmentData);
+  //     // onContinue(termsAndAttachmentData);
+  //     setCurrentScreen("ReviewComponent");
+  //   };
+
   const handleContinue = () => {
-    const termsAndAttachmentData = {
-      paymentTerms,
-      deliverySchedule,
-      shippingMethod,
-      leadTime,
-      files,
-    };
-    setTermsAndAttachmentData(termsAndAttachmentData);
-    // onContinue(termsAndAttachmentData);
-    setCurrentScreen("ReviewComponent");
+    onContinue(termsData); // Pass data to parent
   };
 
   const handleBack = () => {};
@@ -62,7 +73,10 @@ const TermsAndAttachments = ({ onBack, onContinue, quoteDetails }) => {
           <select
             className="w-full p-2 border text-[#101928] rounded"
             value={paymentTerms}
-            onChange={(e) => setPaymentTerms(e.target.value)}
+            // onChange={(e) => setPaymentTerms(e.target.value)}
+            onChange={(e) =>
+              setTermsData({ ...termsData, paymentTerms: e.target.value })
+            }
           >
             <option value="Net 30">Net 30</option>
             <option value="Net 15">Net 15</option>

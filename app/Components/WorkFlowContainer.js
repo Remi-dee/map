@@ -42,10 +42,11 @@ const WorkflowContainer = () => {
     const isActive = step.id === currentStep;
     const isCompleted = step.id < currentStep;
 
+    // Update dynamic styles based on currentStep
     const circleBgColor = isActive
       ? "bg-blue-600 text-white"
       : isCompleted
-      ? "bg-green-100 text-green-600"
+      ? "bg-green-500 text-white"
       : "bg-gray-100 text-gray-500";
 
     const titleColor = isActive

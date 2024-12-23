@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddItemsSection from "./AddItem";
 import TermsAndAttachments from "./TermsAndAttachment";
 
-const RequestForQuote = () => {
+const RequestForQuote = ({ onContinue, initialData, items, setItems }) => {
   const [currentScreen, setCurrentScreen] = useState("RequestForQuote");
   const [quoteDetails, setQuoteDetails] = useState({
     rfqNo: "RFQ-01234",
@@ -17,8 +17,12 @@ const RequestForQuote = () => {
   };
 
   const handleContinue = () => {
-    setCurrentScreen("TermsAndAttachments");
+    onContinue({ ...quoteDetails, items }); // Pass data to parent
   };
+
+  //   const handleContinue = () => {
+  //     setCurrentScreen("TermsAndAttachments");
+  //   };
 
   const handleBack = () => {
     setCurrentScreen("RequestForQuote");
