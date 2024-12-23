@@ -15,6 +15,7 @@ module.exports = {
     },
     fontFamily: {
       inter: ["Inter", "sans-serif"],
+      satoshi: ["var(--font-satoshi)"],
     },
   },
   plugins: [],

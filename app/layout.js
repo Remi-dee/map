@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { satoshi } from "./localFonts/satoshi/localFont";
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
   rel="stylesheet"
@@ -27,9 +28,7 @@ const geistMono = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} dark:bg-[#383544] antialiased`}
-      >
+      <body className={` ${satoshi.variable} dark:bg-[#383544] antialiased`}>
         {" "}
         <Provider store={store}>{children}</Provider>
       </body>
