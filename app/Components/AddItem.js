@@ -117,7 +117,7 @@ const AddItemsSection = () => {
       ))}
 
       <button
-        className="mt-4 px-4 py-2 bg-[#175CFF] text-white rounded"
+        className="mt-4 px-4 py-2 bg-[#175CFF] font-bold text-white rounded"
         onClick={() => dispatch(addItem())}
       >
         Add Item
