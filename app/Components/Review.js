@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
+import Misc from "@/app/assets/review/misc.svg";
+import Sign from "@/app/assets/review/signDoc.svg";
+import Image from "next/image";
 const ReviewComponent = ({
   quoteDetails: requestInfo,
   termsAndAttachmentData: terms,
@@ -28,10 +30,10 @@ const ReviewComponent = ({
   };
 
   return (
-    <div className="p-6 ">
+    <div className="">
       {/* Request Information Section */}
 
-      <div className="bg-white border rounded-md px-[32px] py-[24px]">
+      <div className="bg-white border  rounded-md px-[32px] py-[24px]">
         <h2 className="text-lg font-semibold mb-4 ">Request Information</h2>
         <div className="flex-col mb-6">
           <div className="flex  gap-[240px]">
@@ -64,16 +66,16 @@ const ReviewComponent = ({
               <div className="flex ">
                 <div className="flex items-center space-x-3">
                   {/* Circle with initials */}
-                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-red-100">
-                    <span className="text-sm font-semibold text-red-600">
+                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-[#FFECE5]">
+                    <span className="text-sm font-semibold text-[#101928]">
                       JD
                     </span>
                   </div>
 
                   {/* Name and Role */}
                   <div className="flex items-center space-x-1">
-                    <span className="font-medium text-gray-900">Jane Doe</span>
-                    <span className="text-gray-400">•</span>
+                    <span className="font-medium text-[#101928]">Jane Doe</span>
+                    <span className="text-[#D9D9D9] text-[25px]">•</span>
                     <span className="text-sm text-gray-500">
                       Head Nurse, Paediatrics
                     </span>
@@ -92,60 +94,95 @@ const ReviewComponent = ({
       </div>
 
       {/* Items Section */}
-      <h2 className="text-lg font-semibold mb-4">Item(s)</h2>
-      <table className="w-full mb-6 border">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="py-2 px-4 text-left">Items</th>
-            <th className="py-2 px-4 text-left">Variants</th>
-            <th className="py-2 px-4 text-left">Quantity</th>
-            <th className="py-2 px-4 text-left">Price</th>
-            <th className="py-2 px-4 text-left">Amount</th>
-            <th className="py-2 px-4 text-left">Expected Delivery Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items?.map((item, index) => (
-            <tr key={index} className="border-t">
-              <td className="py-2 px-4">{item.item}</td>
-              <td className="py-2 px-4">{item.variant}</td>
-              <td className="py-2 px-4">{item.quantity}</td>
-              <td className="py-2 px-4">${item.price.toFixed(2)}</td>
-              <td className="py-2 px-4">${item.amount.toFixed(2)}</td>
-              <td className="py-2 px-4">{item.deliveryDate}</td>
+      <div className="bg-white border rounded-md px-[32px] my-[24px] py-[24px]">
+        {" "}
+        <h2 className="flex items-center gap-1 text-lg font-semibold mb-4">
+          Item(s)
+        </h2>
+        <table className="w-full mb-6 border border-[#D0D5DD] rounded-lg overflow-hidden">
+          <thead className="bg-[#F9FAFB] text-[#344054] font-normal text-xs border-b border-gray-300">
+            <tr>
+              <th className="py-2 px-4 text-left">
+                <input
+                  type="checkbox"
+                  className="h-5 w-5 rounded border-gray-300 focus:ring-blue-500 text-blue-600"
+                />
+              </th>
+              <th className="py-2 px-4 text-left">Items</th>
+              <th className="py-2 px-4 text-left">Variants</th>
+              <th className="py-2 px-4 text-left">Quantity</th>
+              <th className="py-2 px-4 text-left">Price</th>
+              <th className="py-2 px-4 text-left">Amount</th>
+              <th className="py-2 px-4 text-left">Expected Delivery Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Total Section */}
-      <div className="mb-6">
-        <div className="flex justify-between text-lg font-semibold">
-          <span>Sub Total</span>
-          <span>${subtotal?.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between text-lg font-semibold mt-2">
-          <span>Total</span>
-          <span>${total?.toFixed(2)}</span>
-        </div>
+          </thead>
+          <tbody className="font-medium text-[14px]">
+            {items?.map((item, index) => (
+              <tr
+                key={index}
+                className={`border-b border-gray-300 ${
+                  index === items.length - 1 ? "last:border-none" : ""
+                }`}
+              >
+                <td className="py-2 px-4 text-left">
+                  <input
+                    type="checkbox"
+                    className="h-5 w-5 rounded border-gray-300 focus:ring-blue-500 text-blue-600"
+                  />
+                </td>
+                <td className="flex gap-2 py-2 px-4">
+                  <Image src={Misc} alt="Delete" className="w-[40px] h-auto" />
+                  <span className="flex flex-col">
+                    <span>{item.item}</span>
+                    <span className="text-[#475367] text-sm">#28373</span>
+                  </span>
+                </td>
+                <td className="py-2 px-4">{item.variant}</td>
+                <td className="py-2 px-4">{item.quantity}</td>
+                <td className="py-2 px-4">${item.price.toFixed(2)}</td>
+                <td className="py-2 px-4">${item.amount.toFixed(2)}</td>
+                <td className="py-2 px-4">{item.deliveryDate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {/* Total Section */}
+        <div className="mb-6 gap-4 flex justify-end mr-[70px]">
+          <div className=" ">
+            <div className="flex flex-col gap-4 font-normal text-[#475367] ">
+              <span>Sub Total</span>
+              <span>Total</span>
+            </div>
+          </div>
+          <div className=" ">
+            <div className="flex flex-col  gap-4 font-normal text-[#475367] ">
+              <span>${subtotal.toFixed(2)}</span>
+              <span>${total?.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>{" "}
       </div>
 
       {/* Terms and Attachments Section */}
-      <div className="bg-gray-100 p-4 rounded mb-6">
-        <h3 className="text-md font-semibold mb-2">Terms and Attachments</h3>
-        <p className="text-sm">Review payment and delivery terms</p>
+      <div className="bg-white items-start gap-[16px] border p-4 rounded mb-6 flex">
+        <Image src={Sign} alt="Delete" className="w-[24px] h-auto" />
+        <div>
+          <h3 className="text-md font-semibold mb-2">Terms and Attachments</h3>
+          <p className="text-sm">Review payment and delivery terms</p>
+        </div>
       </div>
 
       {/* Actions Section */}
-      <div className="flex justify-end space-x-4">
-        <button
-          className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
-          onClick={onEdit}
-        >
-          Edit
+
+      <div className="flex justify-end mt-6">
+        <button className="border-[#E4E7EC] text-[#475367] border  px-4 py-[10px] rounded-[8px] mr-2">
+          Cancel
+        </button>
+        <button className=" text-[#175CFF] border-[#175CFF] border px-[52px] py-[10px] rounded-[8px] mr-2">
+          Save as Draft
         </button>
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          className="bg-[#175CFF] text-white px-[52px] py-[10px] rounded-[8px]"
           onClick={handleSubmit}
         >
           Submit
