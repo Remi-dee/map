@@ -99,7 +99,7 @@ const WorkflowContainer = () => {
               <div
                 key={step.id}
                 className={`flex flex-1 justify-center ${
-                  index !== steps.length - 1 ? "border-r border-gray-200" : ""
+                  index !== steps.length - 1 ? " border-gray-200" : ""
                 }`}
               >
                 {renderStep(step)}
