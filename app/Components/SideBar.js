@@ -76,8 +76,8 @@ const Sidebar = () => {
       </div>
       <div
         className={`hidden lg:flex  ${
-          isCollapsed ? "w-16 " : "w-[370px]"
-        } h-[100] transition-width dark:bg-[#484554] dark:border-gray-700 duration-300  bg-[#F7F9FC] border-r border-[#F1F5F9]`}
+          isCollapsed ? "w-16 " : "w-[370px] px-[8px]"
+        } h-[100] transition-width dark:bg-[#484554] dark:border-gray-700 duration-300   bg-[#F7F9FC] border-r border-[#F1F5F9]`}
       >
         {/* Sidebar content */}
         <div className={`flex flex-col justify-between ${""}`}>
@@ -87,7 +87,7 @@ const Sidebar = () => {
               {" "}
               <ul className="mt-4 ">
                 {" "}
-                <li className="flex items-center p-4  hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4 rounded-md hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   <Image
                     src={Dashboard}
                     alt="Dashboard"
@@ -99,7 +99,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4  hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4 rounded-md hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   <Image
                     src={Inventory}
                     alt="Dashboard"
@@ -111,7 +111,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
+                <li className="flex items-center rounded-md p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] ">
                   <Image
                     src={Procurement}
                     alt="Procurement"
@@ -123,21 +123,21 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4 rounded-md hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   {!isCollapsed && (
                     <span className="ml-[38px] text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
                       Quotes
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
+                <li className="flex items-center p-4 rounded-md hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
                   {!isCollapsed && (
                     <span className="ml-[38px] text-[14px] font-normal leading-[20px] text-left dark:text-[#FFFFFF]">
                       Orders
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 rounded-md hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image src={Finance} alt="Finance" className="w-5 h-auto  " />
                   {!isCollapsed && (
                     <span className="ml-4 text-[14px] font-normal leading-[20px] text-left">
@@ -145,7 +145,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 rounded-md hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <button className="text-gray-500 hover:text-gray-700">
                     <svg
                       width="23"
@@ -176,24 +176,38 @@ const Sidebar = () => {
                   </button>
 
                   {!isCollapsed && (
-                    <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                      Communication
-                    </span>
+                    <div className="flex justify-between items-center rounded-md  w-full">
+                      <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                        Communication
+                      </span>
+                      <div className="flex items-center justify-center h-5 w-9  rounded-[15px] bg-[#175CFF]">
+                        <span className="text-sm font-semibold text-white">
+                          10
+                        </span>
+                      </div>
+                    </div>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] rounded-md dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Calender}
                     alt="Dashboard"
                     className="w-5 h-auto  "
                   />
                   {!isCollapsed && (
-                    <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
-                      Calender
-                    </span>
+                    <div className="flex justify-between items-center  w-full">
+                      <span className="ml-4  text-[14px] font-normal leading-[20px] text-left">
+                        Calender
+                      </span>
+                      <div className="flex items-center justify-center h-5 w-9  rounded-[15px] bg-[#175CFF]">
+                        <span className="text-sm font-semibold text-white">
+                          10
+                        </span>
+                      </div>
+                    </div>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] rounded-md dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Contract}
                     alt="Dashboard"
@@ -207,7 +221,7 @@ const Sidebar = () => {
                 </li>
               </ul>
               <ul className="mt-[90px] ">
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] rounded-md dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Support}
                     alt="Dashboard"
@@ -219,7 +233,7 @@ const Sidebar = () => {
                     </span>
                   )}
                 </li>
-                <li className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
+                <li className="flex items-center p-4 hover:bg-[#E3EAFB] rounded-md dark:hover:bg-[#8576FF] dark:text-[#FFFFFF]">
                   <Image
                     src={Settings}
                     alt="Dashboard"
@@ -232,7 +246,7 @@ const Sidebar = () => {
                   )}
                 </li>
                 <button
-                  className="p-4 flex items-center hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] w-full"
+                  className="p-4 flex items-center hover:bg-[#E3EAFB] rounded-md dark:hover:bg-[#8576FF] dark:text-[#FFFFFF] w-full"
                   onClick={() => setIsCollapsed(!isCollapsed)}
                 >
                   {/* Collapse/Expand icon */}
@@ -256,7 +270,7 @@ const Sidebar = () => {
                   </span>
                 </button>
                 <div className=" w-full">
-                  <label className="flex items-center p-4 hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
+                  <label className="flex items-center p-4 hover:bg-[#E3EAFB] rounded-md dark:hover:bg-[#8576FF] cursor-pointer dark:text-[#FFFFFF]">
                     <button onClick={toggleDarkMode} className=" ">
                       {isDarkMode ? (
                         <PiToggleRightFill className="text-[#8576FF]  h-6 w-6 " />
@@ -274,7 +288,7 @@ const Sidebar = () => {
                     </span>
                   </label>
                 </div>
-                <div className="p-4 dark:text-[#FFFFFF] hover:bg-[#E3EAFB] dark:hover:bg-[#8576FF]">
+                <div className="p-4 dark:text-[#FFFFFF] rounded-md  dark:hover:bg-[#8576FF]">
                   <div className="flex items-center space-x-2">
                     <Image
                       src={Person}
