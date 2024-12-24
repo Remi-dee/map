@@ -1,3 +1,24 @@
+## Quick Demo of the platform MAP
+
+
+
+
+https://github.com/user-attachments/assets/29b6189d-2a6c-4b0f-b9a4-9e394ae25318
+
+
+https://github.com/user-attachments/assets/652592fa-0159-4f78-b11a-fb1b96535dae
+
+
+
+
+
+https://github.com/user-attachments/assets/20da84f2-00d1-482d-a279-4df2598c96c8
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
