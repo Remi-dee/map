@@ -17,10 +17,10 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className="font-satoshi min-h-screen flex pt-0 px-[20px] lg:p-0 w-full  gap-[28px] dark:bg-[#383544] dark:border-gray-700">
+    <div className="font-satoshi min-h-screen flex w-full dark:bg-[#383544] dark:border-gray-700">
       <Sidebar />
 
-      <main className="flex-1 w-full">
+      <main className="flex-1 flex flex-col">
         <Navbar />
         <WorkflowContainer />
       </main>
