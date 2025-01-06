@@ -298,7 +298,7 @@ const Sidebar = () => {
                       }   rounded-full`}
                     />
                     {!isCollapsed && (
-                      <div className="flex gap-[55px] items-center">
+                      <div className="flex justify-between w-full items-center">
                         <div>
                           {" "}
                           <span className="text-[12px] text-[#101928] font-bold leading-[16px] text-left">
